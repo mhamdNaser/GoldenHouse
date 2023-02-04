@@ -20,7 +20,7 @@
     <div class="col-lg-2 vh-100 d-none d-lg-block fixed-top mypseconbg">
         @include('admin.header')
     </div>
-    <div class="d-block d-lg-none fixed-top mypseconbg">
+    <div class="d-block d-lg-none mypseconbg">
         @include('admin.TopNav')
     </div>
     <div class="container-fluid">
@@ -29,7 +29,14 @@
             </div>
             <div class="col-lg-10">
                 <div class="container">
-                @yield('content_dashboard')
+                    <div class="container  mt-5 justify-content-center mypthirdbg myboxshadow g-2 ">
+                        <div class="container bg-light sticky-top p-3 shadow">
+                            @yield('button_header')
+                        </div>
+                        <div class="container justify-content-center g-2 bg-white p-4">
+                            @yield('content_dashboard')
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

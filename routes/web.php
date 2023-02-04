@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\users;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,10 @@ Route::get('cart' /* this is path */ , function () { return view('cart' ); });
 Route::get('dashboard' /* this is path */ , function () { return view('admin/dashboard' ); });
 Route::get('profile' /* this is path */ , function () { return view('admin/profile' ); });
 Route::get('blog' /* this is path */ , function () { return view('blog' ); });
+Route::get('add_service' /* this is path */ , function () { return view('partner/add_service' ); });
 
 
-
+Route::resource('category' , CategoryController::class);
 Route::controller(users::class)->group(function(){
     Route::get('login', 'index')->name('login');
     Route::post('login', 'login')->name('go.login');

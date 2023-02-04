@@ -47,8 +47,8 @@
                         <span>service</span>
                     </a>
                 </li>
-                <li class="nav-item @yield('categories_active')">
-                    <a class="nav-link text-warning-emphasis" href="">
+                <li class="nav-item">
+                    <a class="nav-link text-warning-emphasis  @yield('categories_active')" href="{{route('category.index')}}">
                         <span>category</span>
                     </a>
                 </li>
