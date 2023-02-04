@@ -1,0 +1,78 @@
+.mypimarytext{
+    color: #CF6823;
+    text-decoration: none;
+}
+.mypimarybg{
+    background-color: #CF6823;
+}
+
+.mypimaryborder{
+    border: 2px solid #CF6823;
+}
+
+.mypsecontext{
+    color: #1A0603;
+    text-decoration: none;
+}
+.mypseconbg{
+    background-color: #1A0603;
+}
+
+.mypthirdtext{
+    color: #FFBF31;
+    text-decoration: none;
+}
+
+.mypthirdbg{
+    background-color: #FFBF31;
+}
+
+.myboxshadow{
+    box-shadow: 0px 0px 10px #CF6823;
+}
+
+.myboxshadow1{
+    box-shadow: 0px 0px 30px 8px #1A0603;
+}
+
+.mytextshadow{
+    text-shadow: 0px 2px 5px #CF6823;
+}
+
+.myopacity{
+    opacity: 0.8;
+}
+
+.myopacity0{
+    opacity: 1;
+}
+
+.myopacity1{
+    opacity: 0.4;
+}
+
+.mytextallign{
+    text-align-last: justify;
+}
+
+.imgcardheigh{
+    height: 180px;
+}
+
+.testimonial-card .card-up {
+    height: 120px;
+    overflow: hidden;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+  .testimonial-card .avatar {
+    width: 110px;
+    margin-top: -60px;
+    overflow: hidden;
+    border: 3px solid #fff;
+    border-radius: 50%;
+  }
+
+  .active{
+    color: #FFBF31 !important;
+  }

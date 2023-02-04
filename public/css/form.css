@@ -1,0 +1,10 @@
+.errormessage {
+margin-left: 3px;
+font-size: 12px;
+}
+
+.truth {
+height: 18px;
+font-size: 8px !important;
+font-weight: bolder;
+}
