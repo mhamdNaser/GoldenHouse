@@ -20,7 +20,7 @@
 <body class="container-fluid">
     @include('layout.header')
     <div class="p-5">
-        <div class="container  mt-5 justify-content-center mypthirdbg myboxshadow g-2 ">
+        <div class="container  mt-5 justify-content-center myboxshadow g-2 ">
             <div class="container justify-content-center g-2 bg-white rounded-3">
                 @yield('content')
             </div>

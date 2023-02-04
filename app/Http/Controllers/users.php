@@ -17,8 +17,13 @@ class users extends Controller
      */
     public function index(Request $request)
     {
-        return view('login');
+        $users = User::orderBy('created_at', 'desc')->get();;
+        return view('admin.users.users' , [ 'users'=> $users]);
+    }
 
+    public function register(Request $request)
+    {
+        return view('login');
     }
 
     public function login(Request $request)
@@ -104,18 +109,24 @@ class users extends Controller
         //
     }
 
+    public function logout()
+    {
+        Session::flush();
+        Auth::logout();
+        return Redirect('login');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        Session::flush();
-        Auth::logout();
-  
-        return Redirect('login');
-
+        $users = User::findOrFail($id);
+        $users->delete();
+        return back()->with('success', 'Category deleted successfully');
     }
+
 }

@@ -18,7 +18,7 @@
             <a class="nav-link" href="/contact">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/service">Service</a>
+            <a class="nav-link" href="/HomeService">Service</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/blog">Blog</a>
@@ -27,25 +27,13 @@
         <ul class="navbar-nav d-lg-flex text-center">
         @if (Route::has('login'))
           @auth
-              @if (Auth::user()->userttype === 'ADM')
+              @if (Auth::user()->userttype === 'ADM' || Auth::user()->userttype === 'SVP')
                 <li class="nav-item dropdown">
                   <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-user-circle-o fs-3"></i>
                   </a>
                   <ul class="dropdown-menu me-5 mt-4" style="margin-left: -3rem">
                     <li><a class="dropdown-item" href="{{URL::asset('dashboard')}}">Dashboard</a></li>
-                    <hr>
-                    <li><a class="dropdown-item" href="logout">Log Out</a></li>
-                  </ul>
-                </li>
-              @elseif(Auth::user()->userttype === 'SVP')
-                <li class="nav-item dropdown">
-                  <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa fa-user-circle-o fs-3"></i>
-                  </a>
-                  <ul class="dropdown-menu me-5 mt-4" style="margin-left: -3rem">
-                    <li><a class="dropdown-item" href="{{URL::asset('add_service')}}">Add Service</a></li>
-                    <li><a class="dropdown-item" href="{{URL::asset('My_service')}}">My Service</a></li>
                     <hr>
                     <li><a class="dropdown-item" href="logout">Log Out</a></li>
                   </ul>

@@ -14,14 +14,12 @@
         <div class="form-outline">
             <label class="form-label" for="">Category Name</label>
             <input class="form-control" type="text" id="Category_Name" name="Category_Name" required placeholder="Category Name">
-            <p class="errormessage" id="fnerror">&thinsp;</p>
         </div>
     </div>
     <div class="row align-items-center mb-2">
         <div class="form-outline">
             <label class="form-label" for="">Category Description</label>
             <input class="form-control" type="text" id="Category_Description" name="Category_Description" required placeholder="Category Description">
-            <p class="errormessage" id="fnerror">&thinsp;</p>
         </div>
     </div>
     <div class="input mb-3">

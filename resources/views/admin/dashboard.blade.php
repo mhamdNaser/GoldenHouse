@@ -29,7 +29,7 @@
             </div>
             <div class="col-lg-10">
                 <div class="container">
-                    <div class="container  mt-5 justify-content-center mypthirdbg myboxshadow g-2 ">
+                    <div class="container  mt-5 justify-content-center myboxshadow g-2 ">
                         <div class="container bg-light sticky-top p-3 shadow">
                             @yield('button_header')
                         </div>

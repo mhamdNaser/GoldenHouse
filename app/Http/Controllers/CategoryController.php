@@ -16,7 +16,7 @@ class CategoryController extends Controller
  */
 public function index()
 {
-    $category = Category::get();
+    $category = Category::orderBy('created_at', 'desc')->get();
     return view('admin.category.category', compact('category'));
 }
 
@@ -79,7 +79,7 @@ public function index()
         if (! $category) {
             return redirect('index');
         }
-        return view('admin.categories.editcategories', compact('category'));
+        return view('admin.category.edit', compact('category'));
     }
 
     public function update(Request $request, $id)
@@ -111,7 +111,7 @@ public function index()
         }
 
         $category->save();
-        return redirect('categories');
+        return redirect('category');
         return back()->with('success', 'Category updated successfully');
     }
 

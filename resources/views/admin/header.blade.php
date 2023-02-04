@@ -10,6 +10,7 @@
         </div>
         <div class="row">
             <ul class="navbar-nav text-center">
+                @if (Auth::user()->userttype === 'ADM')
                 <li class="nav-item @yield('Dash_active')">
                     <a class="nav-link text-warning-emphasis" href="{{URL::asset('dashboard')}}">
                         <span>Home</span>
@@ -20,14 +21,9 @@
                         profile
                     </a>
                 </li>
-                <li class="nav-item @yield('Dashboard_active')">
-                    <a class="nav-link text-warning-emphasis" href="{{URL::asset('home')}}">
-                        Site View
-                    </a>
-                </li>
                 <hr class="text-secondary" style="width: 50%; margin: 0 auto">
-                <li class="nav-item @yield('user_active')">
-                    <a class="nav-link text-warning-emphasis" href="">
+                <li class="nav-item">
+                    <a class="nav-link text-warning-emphasis @yield('users_active')" href="{{route('user')}}">
                         <span>User</span>
                     </a>
                 </li>
@@ -42,13 +38,13 @@
                     </a>
                 </li>
                 <hr class="text-secondary" style="width: 50%; margin: 0 auto">
-                <li class="nav-item @yield('service_active') ">
-                    <a class="nav-link text-warning-emphasis" href="">
+                <li class="nav-item">
+                    <a class="nav-link text-warning-emphasis @yield('service_active')" href="{{route('service.index')}}">
                         <span>service</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis  @yield('categories_active')" href="{{route('category.index')}}">
+                    <a class="nav-link text-warning-emphasis @yield('categories_active')" href="{{route('category.index')}}">
                         <span>category</span>
                     </a>
                 </li>
@@ -57,14 +53,44 @@
                         <span>reservation</span>
                     </a>
                 </li>
-                <div class="mt-5">
+                <div style="margin-top: 15rem">
                     <hr class="text-secondary mt-5" style="width: 50%; margin: 0 auto">
+                    <li class="nav-item @yield('Dashboard_active')">
+                        <a class="nav-link text-warning-emphasis" href="{{URL::asset('home')}}">
+                            Site View
+                        </a>
+                    </li>
                     <li class="nav-item">
-                        <a class="nav-link text-warning-emphasis" href="/">
+                        <a class="nav-link text-warning-emphasis" href="logout">
                             Log Out
                         </a>
                     </li>
                 </div>
+                @else
+                <li class="nav-item" aria-current="true">
+                    <a class="nav-link text-warning-emphasis @yield('profile_active')" href="{{URL::asset('profile')}}">
+                        profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-warning-emphasis @yield('service_active')" href="{{route('service.index')}}">
+                        <span>service</span>
+                    </a>
+                </li>
+                <li class="nav-item @yield('Dashboard_active')">
+                    <a class="nav-link text-warning-emphasis" href="{{URL::asset('home')}}">
+                        Site View
+                    </a>
+                </li>
+                <div style="margin-top: 30rem">
+                    <hr class="text-secondary mt-5" style="width: 50%; margin: 0 auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-warning-emphasis" href="logout">
+                            Log Out
+                        </a>
+                    </li>
+                </div>
+                @endif
             </ul>
         </div>
     </div>
