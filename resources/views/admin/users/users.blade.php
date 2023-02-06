@@ -4,7 +4,7 @@
 @section('button_header')
     <div class="row">
         <div class="col">
-            <a href=""><button type="submit" class="btn mypthirdbg" aria-disabled="true" >Add User</button></a>
+            <a href="/add"><button type="submit" class="btn mypthirdbg" aria-disabled="true" >Add User</button></a>
         </div>
     </div>
 @endsection

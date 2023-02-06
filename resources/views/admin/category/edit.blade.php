@@ -10,7 +10,7 @@
     @method('PUT')
     @csrf
     <div class="container text-center">
-        <img src="{{asset('storage/categoryImg/'.$category->Category_Image)}}" class="rounded-circle" alt="">
+        <img src="{{asset('storage/categoryImg/'.$category->Category_Image)}}" class="rounded-circle" alt="" width="160px">
     </div>
     <!-- user input -->
     <div class="row align-items-center mb-2">

@@ -32,13 +32,13 @@ class users extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-   
+
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('home')
                         ->withSuccess('Signed in');
         }
-  
+
         return redirect("login")->withSuccess('Login details are not valid');
     }
 
@@ -50,6 +50,11 @@ class users extends Controller
     public function create()
     {
         return view('register');
+    }
+
+    public function add()
+    {
+        return view('admin.users.create');
     }
 
     /**
@@ -76,6 +81,25 @@ class users extends Controller
         return redirect('login');
     }
 
+
+    public function save(Request $request)
+    {
+        $user_img = $request->file('photo')->getClientOriginalName();
+        $request->file('photo')->storeAs('public/userimage',$user_img);
+        var_dump($request->file('upload_file'));
+
+        $users                      = new User();
+        $users->user_first_name     = $request->first_name;
+        $users->user_last_name      = $request->last_name;
+        $users->userttype           = $request->userttype;
+        $users->phone               = $request->phone;
+        $users->user_photo          = $user_img;
+        $users->email               = $request->email;
+        $users->password            = Hash::make($request->password);
+        $users->save();
+        return redirect('users');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -84,7 +108,7 @@ class users extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('admin.users.edit');
     }
 
     /**

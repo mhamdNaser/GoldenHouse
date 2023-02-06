@@ -23,7 +23,7 @@
                 </li>
                 <hr class="text-secondary" style="width: 50%; margin: 0 auto">
                 <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('users_active')" href="{{route('user')}}">
+                    <a class="nav-link text-warning-emphasis @yield('users_active')" href="{{route('users.index')}}">
                         <span>User</span>
                     </a>
                 </li>
@@ -53,7 +53,7 @@
                         <span>reservation</span>
                     </a>
                 </li>
-                <div style="margin-top: 15rem">
+                <div style="margin-top: 10%">
                     <hr class="text-secondary mt-5" style="width: 50%; margin: 0 auto">
                     <li class="nav-item @yield('Dashboard_active')">
                         <a class="nav-link text-warning-emphasis" href="{{URL::asset('home')}}">

@@ -29,9 +29,14 @@ Route::get('add_service' /* this is path */ , function () { return view('partner
 
 Route::resource('service' , ServiceController::class);
 Route::resource('category' , CategoryController::class);
+
 Route::controller(users::class)->group(function(){
-    Route::get('user', 'index')->name('user');
+    // for dashboard
     Route::resource('users', users::class);
+    Route::get('add', 'add')->name('add');
+    Route::post('add', 'store')->name('add');
+    Route::get('edit', 'edit')->name('edit');
+    // for login and register
     Route::get('login', 'register')->name('login');
     Route::post('login', 'login')->name('go.login');
     Route::get('register', 'create')->name('register');

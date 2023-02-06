@@ -3,7 +3,7 @@
 @section('title', 'service')
 
 <div class="row justify-content-center mypimarybg  pt-5 mt-5 rounded fixed-top">
-    <div class="col-lg-8 col-md-8 col-sm-10"> 
+    <div class="col-lg-8 col-md-8 col-sm-10">
         <div class="row">
             <div class="col-lg-2 col-md-6 col-sm-6">
                 <select class="form-select form-select-sm mb-3 " aria-label=".form-select-lg example">

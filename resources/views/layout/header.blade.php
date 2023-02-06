@@ -1,13 +1,13 @@
 
 
-  <nav class="row navbar navbar-expand-lg mypseconbg navbar-dark fixed-top py-3 px-5">
-    <div class="container">
+  <nav class="row navbar navbar-expand-lg mypseconbg navbar-dark fixed-top py-1 px-5">
+    <div class="container ps-5 pe-5">
       <a class="logo" href="/home"><img src="{{url('/images/login.jpg')}}" alt="" width="80px"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav p-2 flex-grow-1 text-center">
+        <ul class="navbar-nav flex-grow-1 text-center">
           <li class="nav-item">
             <a class="nav-link" href="/home">Home</a>
           </li>
@@ -32,7 +32,7 @@
                   <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-user-circle-o fs-3"></i>
                   </a>
-                  <ul class="dropdown-menu me-5 mt-4" style="margin-left: -3rem">
+                  <ul class="dropdown-menu me-5 mt-2" style="margin-left: -3rem">
                     <li><a class="dropdown-item" href="{{URL::asset('dashboard')}}">Dashboard</a></li>
                     <hr>
                     <li><a class="dropdown-item" href="logout">Log Out</a></li>
@@ -43,21 +43,21 @@
                   <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-user-circle-o fs-3"></i>
                   </a>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu me-5 mt-2">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <hr class="dropdown-divider">
                     <li><a class="dropdown-item" href="logout">Log Out</a></li>
                   </ul>
                 </li>
-              @endif   
+              @endif
           @else
           <li class="nav-item me-2">
-            <a class="nav-link" href="/login" title="Login">Login<i class="fa fa-sign-out ms-2"></i></a>
+            <a class="nav-link" href="{{asset('login')}}" title="Login">Login<i class="fa fa-sign-out ms-2"></i></a>
           </li>
           <li class="nav-item me-2">
               <a class="nav-link" href="{{asset('register')}}" title="register">Register<i class="fa fa-cogs ms-2"></i></a>
           </li>
-        @endif 
+        @endif
         {{-- <li class="nav-item me-2">
           <a href="/cart" class="nav-link" title="cart">
             <i class="fa fa-opencart ms-2"></i>
