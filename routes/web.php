@@ -34,7 +34,7 @@ Route::controller(users::class)->group(function(){
     // for dashboard
     Route::resource('users', users::class);
     Route::get('add', 'add')->name('add');
-    Route::post('add', 'store')->name('add');
+    Route::post('add', 'save')->name('add');
     Route::get('edit', 'edit')->name('edit');
     // for login and register
     Route::get('login', 'register')->name('login');

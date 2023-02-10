@@ -50,7 +50,7 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                     <div class="col-lg-6">
-                        <a href="" class="btn btn-warning">edit </a>
+                        <a href="{{route('users.edit', $user->id)}}" class="btn btn-warning">edit </a>
                     </div>
                 </div>
             </td>

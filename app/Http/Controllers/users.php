@@ -106,9 +106,9 @@ class users extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        return redirect('admin.users.edit');
+        //
     }
 
     /**
@@ -119,7 +119,11 @@ class users extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = user::find($id);
+        if(! $user){
+            redirect('users');
+        }
+        return view('admin.users.edit', [ 'user'=>$user ]);
     }
 
     /**
@@ -128,9 +132,20 @@ class users extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        //
+        $user_img = $request->file('photo')->getClientOriginalName();
+        $request->file('photo')->storeAs('public/userimage',$user_img);
+        var_dump($request->file('upload_file'));
+
+        $user                   = user::findOrFail($id);
+        $user->user_first_name  = $request->first_name;
+        $user->user_last_name   = $request->last_name;
+        $user->photo            = $user_img;
+        $user->email            = $request->email;
+        $user->phone            = $request->phone;
+        $user->save();
+        return view('user');
     }
 
     public function logout()
