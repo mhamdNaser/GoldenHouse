@@ -11,7 +11,7 @@
             <h6 class="text-center text-warning">{{ strtoupper(Auth::user()->user_first_name)}}<br>{{ strtoupper(Auth::user()->user_last_name)}}</h6>
             <form method="post" action="{{route('blog.index')}}" enctype="multipart/form-data">
                 @csrf
-            
+
                 <!-- message input -->
                 <div class="form-outline pt-3">
                     <textarea class="form-control" name="post_content" type="text" placeholder="Enter your message here..." style="height: 5rem" data-sb-validations="required"></textarea>
@@ -26,47 +26,43 @@
                 <div class="col-lg-9 shadow">
                     <div >
                         <div class="row pt-2 pb-1 bg-light border-bottom align-items-end">
-                            {{-- @foreach ($user as $us)
-                            @if ($item->users_id === $us->id) --}}
                             <div class="col-lg-9">
-                                {{-- <img src="{{asset('/storage/userimage/'. $item['user_photo'])}}" class="rounded-circle me-2" height="30rem" width="30rem" alt="Auth Image"> --}}
-                                {{-- <span class="fs-6">{{$item["user_fname"]}}</span><span> {{$item["user_lname"]}}</span> --}}
+                                <img src="{{asset('/storage/userimage/'. $item["user_photo"])}}" class="rounded-circle me-2" height="30rem" width="30rem" alt="Auth Image">
+                                <span class="fs-6">{{$item["user_fname"]}} {{$item["user_lname"]}}</span>
                             </div>
                             <div class="col-lg-3">
-                                <span class="fs-6 text-black-50">{{$item['post_date']}}</span>
+                                <span class="fs-6 text-black-50">{{$item["post_date"]}}</span>
                             </div>
-                            {{-- @endif
-                            @endforeach --}}
                         </div>
                         <div class="row">
                             <div class="col-lg-11 col-md-9 p-4">
-                                {{$item->post_text}}
+                                {{$item["post_text"]}}
                             </div>
                             <div class="col-lg-1 col-md-9 align-self-end">
                                 <div class="row">
                                     <button class="btn align-items-end" type="button" data-bs-toggle="dropdown">
                                         <i class="fa fa-comment-o text-warning"></i>
                                         <span style="display: none">
-                                            @foreach ($comments as $com)
+                                            {{-- @foreach ($comments as $com)
                                                 @if ($item->id === $com->posts_id)
                                                     {{ $commentNumber= DB::table("comments")->where('posts_id', $item->id)->count() }}
                                                 @else
                                                 {{ $commentNumber= 0 }}
                                                 @endif
-                                            @endforeach
+                                            @endforeach --}}
                                         </span>
                                         <span class="text-black-50">
-                                            {{$commentNumber}}
+                                            {{-- {{$commentNumber}} --}}
                                         </span>
                                     </button>
                                     <div class="dropdown-menu w-50" style="width: 320px">
                                         <form  method="post" action="{{route('blog.index')}}" enctype="multipart/form-data" class="row ps-5 pe-5 mt-2">
                                             @csrf
-            
-                                            <input style="display: none" name="postId" value="{{$item->id}}">
+
+                                            <input style="display: none" name="postId" value="{{$item["post_id"]}}">
                                             <textarea class="form-control" name="comment_content" type="text" placeholder="Enter your message here..." style="height: 5rem" data-sb-validations="required"></textarea>
                                             <button type="submit" class="btn btn-warning mt-2">test</button>
-                                        </form>  
+                                        </form>
                                     </div>
                                 </div>
                             </div>

@@ -25,17 +25,16 @@ class PostController extends Controller
             $blog_post['post_user']     =   $item->users_id;
             $blog_post['post_text']     =   $item->post_text;
             $blog_post['post_date']     =   $item->created_at;
+            foreach ($user as $us){
+                if($us->id === $blog_post['post_user']){
+                    $blog_post['user_photo']    =   $us->user_photo;
+                    $blog_post['user_fname']    =   $us->user_first_name;
+                    $blog_post['user_lname']    =   $us->user_last_name;
+                }
+            }
             array_push($result,$blog_post);
         }
-        foreach ($user as $us){
-            $blog_post = [];
-            $blog_post['user_id']       =   $us->id;
-            $blog_post['user_photo']    =   $us->user_photo;
-            $blog_post['user_fname']    =   $us->user_first_name;
-            $blog_post['user_lname']    =   $us->user_last_name;
-            array_push($result,$blog_post);
-        }
-        dd($result);
+
         return view('blog' , [ 'posts'=>$result ]);
     }
 
