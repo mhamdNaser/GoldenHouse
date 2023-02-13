@@ -15,13 +15,13 @@
             <a class="nav-link" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
+            <a class="nav-link" href="{{asset('contact')}}">Contact</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/HomeService">Service</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/blog">Blog</a>
+            <a class="nav-link" href="{{asset('blog')}}">Blog</a>
           </li>
         </ul>
         <ul class="navbar-nav d-lg-flex text-center">
@@ -33,7 +33,7 @@
                       <i class="fa fa-user-circle-o fs-3"></i>
                   </a>
                   <ul class="dropdown-menu me-5 mt-2" style="margin-left: -3rem">
-                    <li><a class="dropdown-item" href="{{URL::asset('dashboard')}}">Dashboard</a></li>
+                    <li><a class="dropdown-item" href="{{asset('dashboard')}}">Dashboard</a></li>
                     <hr>
                     <li><a class="dropdown-item" href="logout">Log Out</a></li>
                   </ul>

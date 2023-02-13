@@ -14,7 +14,8 @@ class MassageController extends Controller
      */
     public function index()
     {
-        //
+        $massage = massage::get();
+        return view('admin.massage.message', [ 'massage'=>$massage] );
     }
 
     /**
@@ -24,7 +25,7 @@ class MassageController extends Controller
      */
     public function create()
     {
-        //
+        return view('contact');
     }
 
     /**
@@ -35,7 +36,12 @@ class MassageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $massage = new massage();
+        $massage->email = $request->email;
+        $massage->title_massage = $request->massage_title;
+        $massage->content_massage = $request->message_content;
+        $massage->save();
+        return view('admin.massage.thanksMassage');
     }
 
     /**
@@ -78,8 +84,10 @@ class MassageController extends Controller
      * @param  \App\Models\massage  $massage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(massage $massage)
+    public function destroy($id)
     {
-        //
+        $massage = massage::findOrFail($id);
+        $massage->delete();
+        return back()->with('success', 'Category deleted successfully');
     }
 }

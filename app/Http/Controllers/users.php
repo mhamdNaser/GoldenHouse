@@ -17,7 +17,7 @@ class users extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::orderBy('created_at', 'desc')->get();;
+        $users = User::get();;
         return view('admin.users.users' , [ 'users'=> $users]);
     }
 
@@ -141,11 +141,11 @@ class users extends Controller
         $user                   = user::findOrFail($id);
         $user->user_first_name  = $request->first_name;
         $user->user_last_name   = $request->last_name;
-        $user->photo            = $user_img;
+        $user->user_photo       = $user_img;
         $user->email            = $request->email;
         $user->phone            = $request->phone;
         $user->save();
-        return view('user');
+        return redirect('users');
     }
 
     public function logout()

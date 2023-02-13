@@ -15,10 +15,8 @@ class CreateMassagesTable extends Migration
     {
         Schema::create('massages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id')->constrained('users');
             $table->string('title_massage');
             $table->string('email');
-            $table->integer('phone')->uniqid();
             $table->string('content_massage');
             $table->timestamps();
         });

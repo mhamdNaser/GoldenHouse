@@ -13,16 +13,6 @@
 
     <!-- user input -->
     <div class="row justify-content-center align-items-center mb-2">
-        <div class="form-outline mb-4">
-            <select class="form-select" aria-label="Register As" id="userttype" name="userttype">
-                <option selected disabled>{{$user->userttype}}</option>
-                <option value="SVP">Partner</option>
-                <option value="STD">Students</option>
-                <option value="ADM">Admin</option>
-            </select>
-        </div>
-    </div>
-    <div class="row justify-content-center align-items-center mb-2">
         <div class="form-outline col-lg-6">
             <label class="form-label" for="">First Name</label>
             <input class="form-control" type="text" id="fname" name="first_name" required value="{{$user->user_first_name}}">

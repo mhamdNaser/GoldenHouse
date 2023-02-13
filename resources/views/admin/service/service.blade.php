@@ -4,11 +4,11 @@
 @section('button_header')
     <div class="row">
         <div class="col">
-            <a href="{{route('service.create')}}"><button type="submit" class="btn mypthirdbg" aria-disabled="true" >Add Category</button></a>
+            <a href="{{route('service.create')}}"><button type="submit" class="btn mypthirdbg" aria-disabled="true" >Add Service</button></a>
         </div>
         <div class="col">
             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
-                <option selected disabled>Price</option>
+                <option selected disabled>Category</option>
                 @foreach ($category as $item)
                     <option class=" text-dark" value="{{$item->id}}">{{$item->Category_Name}}</option>
                 @endforeach

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\post;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = post::orderBy('created_at', 'desc')->get();
+        $user = User::get();
+        return view('blog' , compact('posts', 'user'));
     }
 
     /**
@@ -24,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog');
     }
 
     /**
@@ -35,7 +39,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user()->id;
+        $posts = new post();
+        $posts->users_id    = $user;
+        $posts->post_text   = $request->post_content;
+
+        $posts->save();
+        return redirect('blog');
+
     }
 
     /**
@@ -44,7 +55,7 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(post $post)
+    public function show($id)
     {
         //
     }

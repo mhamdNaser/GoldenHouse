@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class massage extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title_massage',
+        'email',
+        'email',
+        'content_massage',
+    ];
 }
