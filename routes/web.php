@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\MassageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\users;
 use Illuminate\Support\Facades\Route;
@@ -18,18 +22,40 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () { return view('home'); });
 Route::get('home', function () { return view('home'); });
-Route::get('contact' /* this is path */ , function () { return view('contact' );  });
 Route::get('about' /* this is path */ , function () { return view('about' ); });
 Route::get('HomeService' /* this is path */ , function () { return view('HomeService' ); });
 Route::get('cart' /* this is path */ , function () { return view('cart' ); });
 Route::get('dashboard' /* this is path */ , function () { return view('admin/index' ); });
 Route::get('profile' /* this is path */ , function () { return view('admin/profile' ); });
-Route::get('blog' /* this is path */ , function () { return view('blog' ); });
 Route::get('add_service' /* this is path */ , function () { return view('partner/add_service' ); });
 
 Route::resource('service' , ServiceController::class);
 Route::resource('category' , CategoryController::class);
 
+
+
+// controller message
+Route::controller(MassageController::class)->group(function(){
+    Route::get('contact', 'create')->name('contact');
+    Route::post('contact', 'store')->name('contact');
+    Route::resource('massage', MassageController::class);
+});
+
+// Controller Posts
+Route::controller(PostController::class)->group(function(){
+    Route::get('blog', 'create')->name('blog');
+    Route::post('blog', 'store')->name('blog');
+    Route::resource('blog', PostController::class);
+});
+
+// Controller Comment
+// Route::controller(CommentController::class)->group(function(){
+//     Route::get('blog', 'create')->name('blog');
+//     Route::post('blog', 'store')->name('blog');
+//     Route::resource('blog', CommentController::class);
+// });
+
+// controler user
 Route::controller(users::class)->group(function(){
     // for dashboard
     Route::resource('users', users::class);

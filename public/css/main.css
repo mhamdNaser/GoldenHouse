@@ -76,3 +76,14 @@
   .active{
     color: #FFBF31 !important;
   }
+
+  .my-bg-image{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  #commentform{
+    display: none;
+  }

@@ -18,18 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    // public function address (){ return $this->hasMany(address::class); }
-    // public function comment (){ return $this->hasMany(comment::class); }
-    public function contact (){ return $this->hasMany(contact::class); }
-    // public function pio     (){ return $this->hasMany(pio::class); }
-    // public function post    (){ return $this->hasMany(post::class); }
+     public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected $fillable = [
         'userttype',
         'user_first_name',
         'user_last_name',
         'email',
-        'photo',
+        'user_photo',
         'user_phone',
         'gender',
         'Date_of_Birth',

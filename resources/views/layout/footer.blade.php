@@ -1,5 +1,5 @@
 <!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="row justify-content-center align-items-center g-2 mypseconbg">
+<div class="row z-3 justify-content-center align-items-center g-2 mypseconbg">
     <div class="col-lg-8 p-3">
         <div class="row justify-content-center align-items-center g-2">
             <a href="" class="col-1 mypimarytext">
