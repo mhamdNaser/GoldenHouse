@@ -26,17 +26,17 @@
                 <div class="col-lg-9 shadow">
                     <div >
                         <div class="row pt-2 pb-1 bg-light border-bottom align-items-end">
-                            @foreach ($user as $us)
-                            @if ($item->users_id === $us->id)
+                            {{-- @foreach ($user as $us)
+                            @if ($item->users_id === $us->id) --}}
                             <div class="col-lg-9">
-                                <img src="{{asset('/storage/userimage/'. $us->user_photo)}}" class="rounded-circle me-2" height="30rem" width="30rem" alt="Auth Image">
-                                <span class="fs-6">{{$us->user_first_name}} {{$us->user_last_name}}</span>
+                                {{-- <img src="{{asset('/storage/userimage/'. $item['user_photo'])}}" class="rounded-circle me-2" height="30rem" width="30rem" alt="Auth Image"> --}}
+                                {{-- <span class="fs-6">{{$item["user_fname"]}}</span><span> {{$item["user_lname"]}}</span> --}}
                             </div>
                             <div class="col-lg-3">
-                                <span class="fs-6 text-black-50">{{$us->created_at}}</span>
+                                <span class="fs-6 text-black-50">{{$item['post_date']}}</span>
                             </div>
-                            @endif
-                            @endforeach
+                            {{-- @endif
+                            @endforeach --}}
                         </div>
                         <div class="row">
                             <div class="col-lg-11 col-md-9 p-4">

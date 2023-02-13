@@ -18,7 +18,25 @@ class PostController extends Controller
     {
         $posts = post::orderBy('created_at', 'desc')->get();
         $user = User::get();
-        return view('blog' , compact('posts', 'user'));
+        $result = [];
+        foreach($posts as $item ){
+            $blog_post = [];
+            $blog_post['post_id']       =   $item->id;
+            $blog_post['post_user']     =   $item->users_id;
+            $blog_post['post_text']     =   $item->post_text;
+            $blog_post['post_date']     =   $item->created_at;
+            array_push($result,$blog_post);
+        }
+        foreach ($user as $us){
+            $blog_post = [];
+            $blog_post['user_id']       =   $us->id;
+            $blog_post['user_photo']    =   $us->user_photo;
+            $blog_post['user_fname']    =   $us->user_first_name;
+            $blog_post['user_lname']    =   $us->user_last_name;
+            array_push($result,$blog_post);
+        }
+        dd($result);
+        return view('blog' , [ 'posts'=>$result ]);
     }
 
     /**

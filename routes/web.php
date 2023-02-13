@@ -49,11 +49,11 @@ Route::controller(PostController::class)->group(function(){
 });
 
 // Controller Comment
-Route::controller(CommentController::class)->group(function(){
-    Route::get('blog', 'create')->name('blog');
-    Route::post('blog', 'store')->name('blog');
-    Route::resource('blog', CommentController::class);
-});
+// Route::controller(CommentController::class)->group(function(){
+//     Route::get('blog', 'create')->name('blog');
+//     Route::post('blog', 'store')->name('blog');
+//     Route::resource('blog', CommentController::class);
+// });
 
 // controler user
 Route::controller(users::class)->group(function(){
