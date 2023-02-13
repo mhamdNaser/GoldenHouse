@@ -22,7 +22,7 @@ Route::get('contact' /* this is path */ , function () { return view('contact' );
 Route::get('about' /* this is path */ , function () { return view('about' ); });
 Route::get('HomeService' /* this is path */ , function () { return view('HomeService' ); });
 Route::get('cart' /* this is path */ , function () { return view('cart' ); });
-Route::get('dashboard' /* this is path */ , function () { return view('admin/dashboard' ); });
+Route::get('dashboard' /* this is path */ , function () { return view('admin/index' ); });
 Route::get('profile' /* this is path */ , function () { return view('admin/profile' ); });
 Route::get('blog' /* this is path */ , function () { return view('blog' ); });
 Route::get('add_service' /* this is path */ , function () { return view('partner/add_service' ); });
