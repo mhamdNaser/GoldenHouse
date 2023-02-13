@@ -95,9 +95,15 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, post $post)
+    public function update(Request $request, $id)
     {
-        //
+        // $user = Auth::user()->id;
+        // $posts = new post($id);
+        // $posts->users_id    = $user;
+        // $posts->post_text   = $request->post_content;
+
+        // $posts->save();
+        // return redirect('singlepost');
     }
 
     /**

@@ -20,7 +20,7 @@ class CommentController extends Controller
         $comments = comment::orderBy('created_at', 'desc')->get();
         $user = User::get();
         $posts = post::get();
-        // $post = []; 
+        // $post = [];
         // foreach ($posts as $item ){
         //     foreach($user as $us){
 
