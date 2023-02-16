@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\post;
 use App\Models\User;
+use App\Models\comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = post::orderBy('created_at', 'desc')->get();
-        $user = User::get();
+        $posts      = post::orderBy('created_at', 'desc')->get();
+        $user       = User::get();
+        $comment   = comment::get();
         $result = [];
         foreach($posts as $item ){
             $blog_post = [];
@@ -32,12 +34,17 @@ class PostController extends Controller
                     $blog_post['user_lname']    =   $us->user_last_name;
                 }
             }
-            array_push($result,$blog_post);
+            $counter = 0 ;
+            foreach ($comment as $com){
+                if ( $com->posts_id === $blog_post['post_id']){
+                    $counter ++;
+                }
+            }
+            $blog_post['counter'] =  $counter;
+            array_push($result, $blog_post);
         }
-
-        return view('blog' , [ 'posts'=>$result, 'user'=>$user ]);
-    }
-
+        return view('blog', ['posts' => $result, 'user' => $user]);
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -83,7 +90,7 @@ class PostController extends Controller
      * @param  \App\Models\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(post $post)
+    public function edit($id)
     {
         //
     }
@@ -97,13 +104,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $user = Auth::user()->id;
-        // $posts = new post($id);
-        // $posts->users_id    = $user;
-        // $posts->post_text   = $request->post_content;
+        $posts = post::findOrFail($id);
+        
 
-        // $posts->save();
-        // return redirect('singlepost');
+        $posts->save();
+        return redirect('singlepost');
     }
 
     /**

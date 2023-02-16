@@ -13,6 +13,10 @@ class post extends Model
     {
         return $this->hasMany(Post::class);
     }
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
     
     protected $fillable = [
         'users_id',

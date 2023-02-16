@@ -6,9 +6,7 @@
 
     {{-- User Information --}}
     <div class="col-lg-2 mt-2 bg-white" style="height: 30rem">
-        <form method="post" action="{{route('blog.index')}}" enctype="multipart/form-data">
-            @csrf
-
+        <div>
             <div class="row mt-4 justify-content-center">
                 <div class="col-lg-12">
                     <div class="row justify-content-center">
@@ -23,7 +21,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 
     {{-- Post Form And Posts --}}
@@ -50,7 +48,7 @@
         @foreach ($posts as $item )
             <div class="row mb-4 mt-5 justify-content-center align-items-center">
                 <div class="col-lg-9 shadow rounded-3 rounded-top">
-                    <div >
+                    <div>
                         <div class="row pt-2 pb-1 bg-light">
                             <div class="col-lg-8">
                                 <img src="{{asset('/storage/userimage/'. $item["user_photo"])}}" class="rounded-circle me-2" height="30rem" width="30rem" alt="Auth Image">
@@ -67,22 +65,22 @@
                             <div class="col-lg-12 bg-light col-md-9">
                                 <form class="row mb-0" action="">
                                     <div class="col-1 flex-grow-1">
-                                        <button class="btn" type="submit">
+                                        <a class="btn" type="submit">
                                             <i class="fa fa-heart-o text-warning"></i>
                                             <span style="display: none">
-                                                {{-- number of comment --}}
+                                                {{-- number of like --}}
                                             </span>
 
-                                        </button>
+                                        </a>
                                     </div>
                                     <div class="col-1">
-                                        <button class="btn" type="button">
-                                            <i class="fa fa-comment-o text-warning"></i>
-                                            <span style="display: none">
-                                                {{-- number of comment --}}
-                                            </span>
-
-                                        </button>
+                                        <div class="row">
+                                            <a class="btn fa fa-comment-o text-warning" href="{{route('comment.show', $item['post_id'])}}">
+                                                <span class="text-warning">
+                                                    {{$item['counter']}}
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
