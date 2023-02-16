@@ -35,7 +35,7 @@ class PostController extends Controller
             array_push($result,$blog_post);
         }
 
-        return view('blog' , [ 'posts'=>$result ]);
+        return view('blog' , [ 'posts'=>$result, 'user'=>$user ]);
     }
 
     /**

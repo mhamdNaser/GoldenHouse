@@ -17,11 +17,11 @@
 
     <title>@yield('title')</title>
 </head>
-<body class="container-fluid">
+<body class="container-fluid" style="background-color: #f5f5f5">
     @include('layout.header')
     <div class="p-5">
         <div class="container  mt-5 justify-content-center myboxshadow g-2 ">
-            <div class="container justify-content-center g-2 bg-white rounded-3">
+            <div class="container justify-content-center g-2 rounded-3">
                 @yield('content')
             </div>
         </div>
