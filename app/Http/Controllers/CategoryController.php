@@ -9,16 +9,22 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-        /**
- * Display a listing of the resource.
- *
- * @return \Illuminate\Http\Response
- */
-public function index()
-{
-    $category = Category::orderBy('created_at', 'desc')->get();
-    return view('admin.category.category', compact('category'));
-}
+            /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $category = Category::orderBy('created_at', 'desc')->get();
+        return view('admin.category.category', compact('category'));
+    }
+
+    public function view()
+    {
+        $categoryies = Category::orderBy('created_at', 'desc')->get();
+            return view('home', compact('categories'));
+    }
 
 
     /**

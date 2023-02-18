@@ -12,14 +12,16 @@
     <div class="col-lg-4">
       <div class="card mb-4">
         <div class="card-body text-center">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-            class="rounded-circle img-fluid" style="width: 150px;">
-          <h5 class="my-3">John Smith</h5>
-          <p class="text-muted mb-1">Full Stack Developer</p>
-          <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+          <img src="{{asset('/storage/userimage/'. Auth::user()->user_photo)}}" class="rounded-circle img-fluid" style="width: 150px;" alt="Auth Image">
+          <h5 class="my-3 fw-bolder">
+            @if (Auth::user()->userttype === 'ADM')
+              <i class="fa fa-vcard text-warning"></i>  {{ strtoupper(Auth::user()->userttype)}}
+            @else
+              <i class="fa fa-vcard text-warning"></i>  {{ strtoupper(Auth::user()->userttype)}}
+            @endif
+          </h5>
+          <p class="text-black-50 mb-1 fs-4 fw-bolder">{{ strtoupper(Auth::user()->user_first_name)}} {{ strtoupper(Auth::user()->user_last_name)}}</p>
           <div class="d-flex justify-content-center mb-2">
-            <button type="button" class="btn btn-primary">Follow</button>
-            <button type="button" class="btn btn-outline-primary ms-1">Message</button>
           </div>
         </div>
       </div>

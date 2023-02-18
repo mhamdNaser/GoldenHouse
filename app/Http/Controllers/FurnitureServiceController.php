@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\category;
-use App\Models\CleanService;
-use App\Models\DeliveryService;
-use App\Models\User;
-use App\Models\HouseService;
+use App\Models\FurnitureService;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class FurnitureServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $users = User::get();
-        $category = category::all();
-        $housing = HouseService::all();
-        $cleaning = CleanService::all();
-        $delivery = DeliveryService::all();
-        return view('admin.service.service', [ 'category' => $category, 'housing'=>$housing, 'users'=>$users, 'cleaning'=>$cleaning, 'delivery'=>$delivery]);
+        //
     }
 
     /**
@@ -50,10 +41,10 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\House  $house
+     * @param  \App\Models\FurnitureService  $furnitureService
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(FurnitureService $furnitureService)
     {
         //
     }
@@ -61,10 +52,10 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\House  $house
+     * @param  \App\Models\FurnitureService  $furnitureService
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(FurnitureService $furnitureService)
     {
         //
     }
@@ -73,10 +64,10 @@ class ServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\House  $house
+     * @param  \App\Models\FurnitureService  $furnitureService
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, FurnitureService $furnitureService)
     {
         //
     }
@@ -84,10 +75,10 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\House  $house
+     * @param  \App\Models\FurnitureService  $furnitureService
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(FurnitureService $furnitureService)
     {
         //
     }

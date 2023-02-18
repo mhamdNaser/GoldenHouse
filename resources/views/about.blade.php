@@ -3,7 +3,7 @@
 @section('title', 'About Us')
 
 <div class="row myboxshadow" style="background-image: url({{url('/images/about-bg.jpg')}}); background-size: cover; background-attachment: fixed; position: center center">
-    <div class="col-lg-6 myopacity0 rounded-3">
+    <div class="col-lg-7 myopacity0 rounded-3">
         <div class="text-dark">
             <div class="col-lg-12 py-5 px-lg-5">
                 <div class="row">
@@ -12,15 +12,15 @@
                         The Golden House
                     </h1>
                 </div>
-                <div class="row  justify-content-center">
-                    <div class="col-lg-8 ">
-                        <p>We started as a small company in 2022<br>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <p class=" fs-5">We started as a small company in 2022<br>
                             The main objective was to secure housing for students coming to Aqaba to complete their studies <br>
                             Soon our partnerships began to increase and we expanded to serve students all over Jordan<br>
                         </p>
-                        <div class="">
-                            <h5 class="text-start">The two governors who are in it</h5>
-                            <p  class="text-start">
+                        <div class=" text-center">
+                            <h5>The two governors who are in it</h5>
+                            <p>
                                 Amman<br>
                                 Karak<br>
                                 Ajloun<br>
@@ -31,24 +31,28 @@
                     </div>
                 </div>
                 <div class="col-lg-12 mt-5">
-                    <div class="card-group row p-5 g-2">
-                        <h2 class="fs-1 fw-bold mypimarytext mytextshadow mb-4 text-center justify-content-center">
-                            The Partner
-                        </h2>
-                        <div class="card col-lg-3 ms-3 me-3 mb-3 rounded-pill mypimaryborder myboxshadow align-items-center p-5">
-                            <img src="{{url('/images/partner.png')}}" class="imgcardheigh rounded-circle" alt="..." width="120rem" height="120rem">
+                    <div class="card-group row p-1 text-center">
+                        <div class="card border-0 bg-transparent ms-3 me-3 align-items-center">
+                          <h2 class="fs-1 fw-bold mypimarytext mytextshadow1 mb-4 text-center justify-content-center">
+                              The Partner
+                          </h2>
+                        </div>
+                    </div>
+                    <div class="card-group row p-1 text-center">
+                        <div class="card ms-3 me-3 mb-3 rounded-pill align-items-center p-4">
+                            <img src="{{url('/images/partner.png')}}" class="rounded-circle" alt="..." width="80rem">
                             <div class="card-body">
                                 <h5 class="card-title mt-2">Card title</h5>
                             </div>
                         </div>
-                        <div class="card col-lg-3 ms-3 me-3 mb-3 rounded-pill mypimaryborder myboxshadow align-items-center p-5">
-                            <img src="{{url('/images/partner.png')}}" class="imgcardheigh rounded-circle" alt="..." width="120rem" height="120rem">
+                        <div class="card ms-3 me-3 mb-3 rounded-pill align-items-center p-4">
+                            <img src="{{url('/images/partner.png')}}" class="rounded-circle" alt="..." width="80rem">
                             <div class="card-body">
                                 <h5 class="card-title mt-2">Card title</h5>
                             </div>
                         </div>
-                        <div class="card col-lg-3 ms-3 me-3 mb-3 rounded-pill mypimaryborder myboxshadow align-items-center p-5">
-                            <img src="{{url('/images/partner.png')}}" class="imgcardheigh rounded-circle" alt="..." width="120rem" height="120rem">
+                        <div class="card ms-3 me-3 mb-3 rounded-pill align-items-center p-4">
+                            <img src="{{url('/images/partner.png')}}" class="rounded-circle" alt="..." width="80rem">
                             <div class="card-body">
                                 <h5 class="card-title mt-2">Card title</h5>
                             </div>

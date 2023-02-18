@@ -22,7 +22,7 @@
 
 
 @extends('admin.dashboard')
-@section('users_active', 'active')
+@section('Dash_active', 'active')
 
 @section('button_header')
     <div class="row">

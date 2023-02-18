@@ -17,7 +17,7 @@ class users extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::get();;
+        $users = User::get();
         return view('admin.users.users' , [ 'users'=> $users]);
     }
 
@@ -35,7 +35,7 @@ class users extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('home')
+            return redirect()->route('home')
                         ->withSuccess('Signed in');
         }
 

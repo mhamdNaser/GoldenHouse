@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('houses', function (Blueprint $table) {
+        Schema::create('clean_services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('serviceCategory')->constrained('categories');
+            $table->foreignId('partnerId')->constrained('users');
+            $table->string('serviceName')->uniqid();
+            $table->string('serviceDescription');
+            $table->string('servicePrice');
+            $table->string('service_photo1')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('houses');
+        Schema::dropIfExists('clean_services');
     }
 };

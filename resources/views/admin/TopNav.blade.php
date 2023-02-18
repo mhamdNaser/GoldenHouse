@@ -25,7 +25,7 @@
                             </a>
                         </li>
                         <li class="nav-item @yield('Dashboard_active')">
-                            <a class="nav-link text-warning-emphasis" href="{{URL::asset('home')}}">
+                            <a class="nav-link text-warning-emphasis" href="{{route('home')}}">
                                 Site View
                             </a>
                         </li>
@@ -78,7 +78,7 @@
                     </a>
                 </li>
                 <li class="nav-item @yield('Dashboard_active')">
-                    <a class="nav-link text-warning-emphasis" href="{{URL::asset('home')}}">
+                    <a class="nav-link text-warning-emphasis" href="{{route('home')}}">
                         Site View
                     </a>
                 </li>

@@ -2,7 +2,7 @@
 
 @section('title', 'Golen House')
 
-<!-- Contact-->
+<!-- search and land section-->
 <div class="row myboxshadow my-bg-image" style="background-image: url({{url('/images/slide4.jpg')}})">
     <div class="col-lg-6  myopacity bg-white vh-50">
         <div class="col-lg-12 bg-white myopacity0 rounded-3">
@@ -14,7 +14,7 @@
                     <h1 class="fs-1">
                         The Golden House
                     </h1>
-                    <p>When you are looking for safe, comfortable, and clean housing, we are your first choice <br>
+                    <p class="fs-5">When you are looking for safe, comfortable, and clean housing, we are your first choice <br>
                         Start your experience with us where you deserve to be
                     </p>
                     <div class="row justify-content-center align-items-center g-2">
@@ -22,7 +22,7 @@
                             <form class="P-5">
                                 <!-- search form input-->
                                 <div class="row justify-content-center align-items-center g-2">
-                                    <input class="form-control" id="email" type="email" placeholder="Search For" aria-label="Enter email address..." data-sb-validations="required,email" />
+                                    <input class="form-control" id="email" type="text" placeholder="Search For" />
                                     <button class="btn btn-primary " id="submitButton" type="submit">Search</button>
                                 </div>
                             </form>
@@ -34,48 +34,29 @@
     </div>
 </div>
 
+<!-- Category Section -->
 <div class="col-lg-12 mt-5">
-    <div class="card-group row p-5 g-2">
-        <h2 class="fs-1 fw-bold mypimarytext mytextshadow mb-4 text-center">
-            The Top Service
-        </h2>
-        <div class="row g-2 justify-content-center">
-            <div class="card col-lg-3 ms-3 me-3 mb-3">
-                <img src="{{url('/images/slide1.jpg')}}" class="card-img-top imgcardheigh" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-12 text-center">
-                        <button class="btn btn-warning mypimarybg text-white border-warning" type="submit">ADD TO CART</button>
+    <div class="container-fluid pt-5 pb-5">
+        <div class=" row justify-content-center pt-5 pb-5">
+            <h2 class="fs-1 fw-bold mypimarytext mytextshadow mb-4 text-center">
+                Category Service
+            </h2>
+            @foreach ($categories as $category)
+                <div class="card col-lg-2 col-md-4 col-sm-6 ms-2 me-2 mt-3">
+                    <img src="{{asset('storage/categoryImg/'.$category->Category_Image)}}" class="card-img-top imgcardheigh" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$category->Category_Name}}</h5>
+                        <p class="card-text">
+                            {{$category->Category_Description}}
+                        </p>
+                    </div>
+                    <div class="row p-2 m-2">
+                        <div class="col-lg-12 text-center">
+                            <button class="btn btn-warning mypimarybg text-white border-warning" type="submit">Show Service</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card col-lg-3 ms-3 me-3 mb-3">
-                <img src="{{url('/images/slide2.jpg')}}" class="card-img-top imgcardheigh" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-12 text-center">
-                        <button class="btn btn-warning mypimarybg text-white border-warning" type="submit">ADD TO CART</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-lg-3 ms-3 me-3 mb-3">
-                <img src="{{url('/images/slide3.jpg')}}" class="card-img-top imgcardheigh" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                </div>
-                <div class="row p-2">
-                    <div class="col-lg-12 text-center">
-                        <button class="btn btn-warning mypimarybg text-white border-warning" type="submit">ADD TO CART</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
