@@ -10,6 +10,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\HouseServiceController;
 use App\Http\Controllers\CleanServiceController;
 use App\Http\Controllers\DeliveryServiceController;
+use App\Http\Controllers\PioController;
 use App\Http\Controllers\users;
 use Illuminate\Support\Facades\Route;
 
@@ -31,11 +32,19 @@ Route::get('dashboard' /* this is path */ , function () { return view('admin/ind
 Route::get('profile' /* this is path */ , function () { return view('admin/profile' ); });
 Route::get('add_service' /* this is path */ , function () { return view('partner/add_service' ); });
 
+
 Route::resource('service' , ServiceController::class);
 Route::resource('category' , CategoryController::class);
 Route::resource('HouseService' , HouseServiceController::class);
 Route::resource('CleanService' , CleanServiceController::class);
 Route::resource('DeliveryService' , DeliveryServiceController::class);
+
+
+// controller message
+Route::controller(PioController::class)->group(function(){
+    Route::get('profile', 'create')->name('pioSave');
+    Route::post('profile', 'store')->name('pioSave');
+});
 
 // controller message
 Route::controller(MassageController::class)->group(function(){

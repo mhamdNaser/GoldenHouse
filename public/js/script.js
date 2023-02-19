@@ -80,4 +80,15 @@ recheckpass = () => {
 
 }
 
+function toggleForm() {
+    var form = document.getElementById("pioForm");
+    var button = document.getElementById("myButton");
 
+    if (form.style.display === "none") {
+      form.style.display = "block";
+      button.innerHTML = "Hide Form";
+    } else {
+      form.style.display = "none";
+      button.innerHTML = "Show Form";
+    }
+  }

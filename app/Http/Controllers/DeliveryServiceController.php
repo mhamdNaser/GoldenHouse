@@ -31,7 +31,7 @@ class DeliveryServiceController extends Controller
                 $housing = $item->id;
                 $housingname = $item->Category_Name;
             }
-             
+
         }
         return view('admin/service/deliveryService', compact('housing', 'housingname'));
     }

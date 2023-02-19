@@ -19,9 +19,8 @@ return new class extends Migration
             $table->foreignId('partnerId')->constrained('users');
             $table->string('serviceName')->uniqid();
             $table->string('serviceDescription');
+            $table->string('servicePrice');
             $table->string('service_photo1')->nullable();
-            $table->string('service_photo2')->nullable();
-            $table->string('service_photo3')->nullable();
             $table->timestamps();
         });
     }
