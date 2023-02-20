@@ -28,11 +28,11 @@ class HouseServiceController extends Controller
     {
         $category = category::all();
         foreach ($category as $item) {
-            if ($item->id === 1) {
+            if ($item->Category_Name === 'Housing') {
                 $housing = $item->id;
                 $housingname = $item->Category_Name;
             }
-             
+
         }
         return view('admin/service/houseService', compact('housing', 'housingname'));
     }
@@ -116,6 +116,7 @@ class HouseServiceController extends Controller
         var_dump($request->file('upload_file'));
 
         $service = HouseService::findOrFail($id);
+        $service->serviceCategory       = $request->catId;
         $service->serviceName           = $request->service_name;
         $service->serviceDescription    = $request->service_desc;
         $service->price_bed             = $request->price_bed;

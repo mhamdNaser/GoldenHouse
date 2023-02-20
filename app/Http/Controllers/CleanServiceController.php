@@ -27,11 +27,11 @@ class CleanServiceController extends Controller
     {
         $category = category::all();
         foreach ($category as $item) {
-            if ($item->id === 2) {
+            if ($item->Category_Name === 'Clean') {
                 $housing = $item->id;
                 $housingname = $item->Category_Name;
             }
-             
+
         }
         return view('admin/service/cleanService', compact('housing', 'housingname'));
     }
@@ -100,6 +100,7 @@ class CleanServiceController extends Controller
         var_dump($request->file('upload_file'));
 
         $service = CleanService::findOrFail($id);
+        $service->serviceCategory       = $request->catId;
         $service->serviceName           = $request->service_name;
         $service->serviceDescription    = $request->service_desc;
         $service->servicePrice             = $request->price;

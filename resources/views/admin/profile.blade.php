@@ -27,11 +27,11 @@
             <div class="card-body text-center">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        @foreach ($pio as $pios)
+                        {{-- @foreach ($pio as $pios)
                             @if ( Auth::user()->id === $pios->users_id)
                                 <span class="row">{{$pios->pio_text}}</span>
                             @endif
-                        @endforeach
+                        @endforeach --}}
                         Add Pio
                         <button class="border-0 bg-body text-warning fa fa-edit" onclick="toggleForm()"></button>
                         <form action="{{route('pioSave')}}" method="post" id="pioForm" style="display: none">

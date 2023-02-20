@@ -18,7 +18,7 @@
             <a class="nav-link fs-5" href="{{asset('contact')}}">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fs-5" href="/HomeService">Service</a>
+            <a class="nav-link fs-5" href="/seviceshow">Service</a>
           </li>
         </ul>
         <ul class="navbar-nav d-lg-flex text-center">

@@ -27,7 +27,7 @@ class DeliveryServiceController extends Controller
     {
         $category = category::all();
         foreach ($category as $item) {
-            if ($item->id === 4) {
+            if ($item->Category_Name === 'Delivery') {
                 $housing = $item->id;
                 $housingname = $item->Category_Name;
             }
@@ -100,6 +100,7 @@ class DeliveryServiceController extends Controller
         var_dump($request->file('upload_file'));
 
         $service = DeliveryService::findOrFail($id);
+        $service->serviceCategory       = $request->catId;
         $service->serviceName           = $request->service_name;
         $service->serviceDescription    = $request->service_desc;
         $service->servicePrice             = $request->price;

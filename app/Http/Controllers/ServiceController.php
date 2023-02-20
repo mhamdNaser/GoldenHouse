@@ -55,7 +55,32 @@ class ServiceController extends Controller
      */
     public function show()
     {
-        //
+        $housing = HouseService::get();
+        $clean = CleanService::get();
+        $delivery = DeliveryService::get();
+        $result = [];
+        foreach($housing as $item ){
+            $serviceCard = [];
+            $serviceCard['serviceName']             =   $item->serviceName;
+            $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['serviceDescription']      =   $item->serviceDescription;
+            array_push($result, $serviceCard);
+        }
+        foreach($clean as $item ){
+            $serviceCard = [];
+            $serviceCard['serviceName']             =   $item->serviceName;
+            $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['serviceDescription']      =   $item->serviceDescription;
+            array_push($result, $serviceCard);
+        }
+        foreach($delivery as $item ){
+            $serviceCard = [];
+            $serviceCard['serviceName']             =   $item->serviceName;
+            $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['serviceDescription']      =   $item->serviceDescription;
+            array_push($result, $serviceCard);
+        }
+        return view('HomeService' , compact('result'));
     }
 
     /**

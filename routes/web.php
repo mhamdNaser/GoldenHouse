@@ -26,19 +26,25 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about' /* this is path */ , function () { return view('about' ); });
-Route::get('HomeService' /* this is path */ , function () { return view('homeService' ); });
+// Route::get('HomeService' /* this is path */ , function () { return view('homeService' ); });
 Route::get('categoryService' /* this is path */ , function () { return view('admin/service/categoryService' ); });
 Route::get('dashboard' /* this is path */ , function () { return view('admin/index' ); });
 Route::get('profile' /* this is path */ , function () { return view('admin/profile' ); });
 Route::get('add_service' /* this is path */ , function () { return view('partner/add_service' ); });
 
 
-Route::resource('service' , ServiceController::class);
+
 Route::resource('category' , CategoryController::class);
 Route::resource('HouseService' , HouseServiceController::class);
 Route::resource('CleanService' , CleanServiceController::class);
 Route::resource('DeliveryService' , DeliveryServiceController::class);
 
+
+// controller message
+Route::controller(ServiceController::class)->group(function(){
+    Route::get('seviceshow', 'show')->name('seviceshow');
+    Route::resource('service' , ServiceController::class);
+});
 
 // controller message
 Route::controller(PioController::class)->group(function(){
