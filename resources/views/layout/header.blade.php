@@ -41,7 +41,10 @@
                 </li>
               @else
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span style="font-size: 12px">
+                        {{ strtoupper(Auth::user()->user_first_name)}} {{ strtoupper(Auth::user()->user_last_name)}}&emsp;
+                      </span>
                       <i class="fa fa-user-circle-o fs-3"></i>
                   </a>
                   <ul class="dropdown-menu me-5 mt-2">

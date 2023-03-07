@@ -59,7 +59,7 @@ class HouseServiceController extends Controller
         $housing->partnerId             = $request->userId;
         $housing->serviceName           = $request->service_name;
         $housing->serviceDescription    = $request->service_desc;
-        $housing->price_bed             = $request->price_bed;
+        $housing->servicePrice          = $request->price_bed;
         $housing->romeNumber            = $request->romeNumber;
         $housing->bedNumber             = $request->bedNumber;
         $housing->service_photo1        = $service_img1;

@@ -39,19 +39,19 @@
                         </div>
                     </div>
                     <div class="card-group row p-1 text-center">
-                        <div class="card ms-3 me-3 mb-3 rounded-pill align-items-center p-4">
+                        <div class="card ms-3 me-3 mb-3 rounded-circle align-items-center p-4">
                             <img src="{{url('/images/partner.png')}}" class="rounded-circle" alt="..." width="80rem">
                             <div class="card-body">
                                 <h5 class="card-title mt-2">Card title</h5>
                             </div>
                         </div>
-                        <div class="card ms-3 me-3 mb-3 rounded-pill align-items-center p-4">
+                        <div class="card ms-3 me-3 mb-3 rounded-circle align-items-center p-4">
                             <img src="{{url('/images/partner.png')}}" class="rounded-circle" alt="..." width="80rem">
                             <div class="card-body">
                                 <h5 class="card-title mt-2">Card title</h5>
                             </div>
                         </div>
-                        <div class="card ms-3 me-3 mb-3 rounded-pill align-items-center p-4">
+                        <div class="card ms-3 me-3 mb-3 rounded-circle align-items-center p-4">
                             <img src="{{url('/images/partner.png')}}" class="rounded-circle" alt="..." width="80rem">
                             <div class="card-body">
                                 <h5 class="card-title mt-2">Card title</h5>

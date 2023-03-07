@@ -63,6 +63,7 @@ class ServiceController extends Controller
             $serviceCard = [];
             $serviceCard['serviceName']             =   $item->serviceName;
             $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['service_price']           =   $item->servicePrice;
             $serviceCard['serviceDescription']      =   $item->serviceDescription;
             array_push($result, $serviceCard);
         }
@@ -70,6 +71,7 @@ class ServiceController extends Controller
             $serviceCard = [];
             $serviceCard['serviceName']             =   $item->serviceName;
             $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['service_price']           =   $item->servicePrice;
             $serviceCard['serviceDescription']      =   $item->serviceDescription;
             array_push($result, $serviceCard);
         }
@@ -77,6 +79,7 @@ class ServiceController extends Controller
             $serviceCard = [];
             $serviceCard['serviceName']             =   $item->serviceName;
             $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['service_price']           =   $item->servicePrice;
             $serviceCard['serviceDescription']      =   $item->serviceDescription;
             array_push($result, $serviceCard);
         }

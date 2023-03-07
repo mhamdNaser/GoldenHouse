@@ -26,7 +26,8 @@
             <th>Service Name</th>
             <th>Service Price</th>
             <th>Partner Name</th>
-            <th>Service Details</th>
+            <th>Rooms</th>
+            <th>Beds</th>
             <th>Service Category</th>
             <th>Service Description</th>
             <th>Action</th>
@@ -34,16 +35,18 @@
     </thead>
     <tbody>
         @foreach ($housing as $item)
+        @if( Auth::user()->userttype === 'ADM'  || (Auth::user()->userttype === 'SVP' && $item->partnerId == Auth::user()->id))
         <tr>
             <td><img src="{{asset('/storage/serviceImg/' . $item->service_photo1)}}" class="rounded-circle" alt="" width="80px"></td>
             <td class="fw-bolder">{{$item->serviceName}}</td>
-            <td class="fw-bolder"><span class="text-danger">{{$item->price_bed}}</span> JD</td>
+            <td class="fw-bolder"><span class="text-danger">{{$item->servicePrice}}</span> JD</td>
             @foreach ($users as $user)
                 @if ($user->id === $item->partnerId)
                     <td class="fw-bolder">{{$user->user_first_name}} {{$user->user_last_name}}</td>
                 @endif
             @endforeach
-            <td class="fw-bolder text-black-50">rome : {{$item->romeNumber}} <span class="text-dark">/</span> bed : {{$item->bedNumber}}</td>
+            <td class="fw-bolder text-black-50">rome : {{$item->romeNumber}} </td>
+            <td class="fw-bolder text-black-50">bed : {{$item->bedNumber}}</td>
             @foreach ($category as $cat)
                 @if ( $cat->id === $item->serviceCategory)
                     <td class="fw-bolder">{{$cat->Category_Name}}</td>
@@ -55,7 +58,7 @@
                 <form action="{{route('HouseService.destroy', $item->id)}}" method="post" class="col-lg-6">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger me-2">Delete</button>
     
                 </form>
                 <div class="col-lg-6">
@@ -64,8 +67,10 @@
             </div>
           </td>
         </tr>
+        @endif
         @endforeach
         @foreach ($cleaning as $item)
+        @if(Auth::user()->userttype === 'ADM'  || (Auth::user()->userttype === 'SVP' && $item->partnerId == Auth::user()->id))
         <tr>
             <td><img src="{{asset('/storage/serviceImg/' . $item->service_photo1)}}" class="rounded-circle" alt="" width="80px"></td>
             <td class="fw-bolder">{{$item->serviceName}}</td>
@@ -75,6 +80,7 @@
                     <td class="fw-bolder">{{$user->user_first_name}} {{$user->user_last_name}}</td>
                 @endif
             @endforeach
+            <td class="fw-bolder text-black-50"></td>
             <td class="fw-bolder text-black-50"></td>
             @foreach ($category as $cat)
                 @if ( $cat->id === $item->serviceCategory)
@@ -87,7 +93,7 @@
                 <form action="{{route('CleanService.destroy', $item->id)}}" method="post" class="col-lg-6">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger me-2">Delete</button>
     
                 </form>
                 <div class="col-lg-6">
@@ -96,8 +102,10 @@
             </div>
           </td>
         </tr>
+        @endif
         @endforeach
         @foreach ($delivery as $item)
+        @if(Auth::user()->userttype === 'ADM'  || (Auth::user()->userttype === 'SVP' && $item->partnerId == Auth::user()->id))
         <tr>
             <td><img src="{{asset('/storage/serviceImg/' . $item->service_photo1)}}" class="rounded-circle" alt="" width="80px"></td>
             <td class="fw-bolder">{{$item->serviceName}}</td>
@@ -107,6 +115,7 @@
                     <td class="fw-bolder">{{$user->user_first_name}} {{$user->user_last_name}}</td>
                 @endif
             @endforeach
+            <td class="fw-bolder text-black-50"></td>
             <td class="fw-bolder text-black-50"></td>
             @foreach ($category as $cat)
                 @if ( $cat->id === $item->serviceCategory)
@@ -119,7 +128,7 @@
                 <form action="{{route('DeliveryService.destroy', $item->id)}}" method="post" class="col-lg-6">
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger me-2">Delete</button>
     
                 </form>
                 <div class="col-lg-6">
@@ -128,8 +137,10 @@
             </div>
           </td>
         </tr>
+        @endif
         @endforeach
     </tbody>
   </table>
 </div>
 @endsection
+<script src="{{url('js/script.js')}}"></script>

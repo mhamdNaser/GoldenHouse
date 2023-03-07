@@ -7,7 +7,7 @@
 @endsection
 
 @section('content_dashboard')
-<div class=" table-responsive">
+<div class="table-responsive">
 <table class="table align-middle text-center">
     <thead class="table-dark">
         <tr>

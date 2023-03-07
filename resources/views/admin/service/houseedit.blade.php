@@ -14,10 +14,12 @@
         </div>
     </div>
     <div class="col">
+        
         <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example"  name="catId">
-            <option selected disabled>Category</option>
             @foreach ($category as $item)
-                <option class=" text-dark" value="{{$item->id}}">{{$item->Category_Name}}</option>
+            @if ( $service->serviceCategory == $item->id)
+                <option class="text-dark" value="{{$item->id}}" selected disabled>{{$item->Category_Name}}</option>
+            @endif
             @endforeach
         </select>
     </div>

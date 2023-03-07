@@ -10,7 +10,7 @@
             <th>User Name</th>
             <th>Comment text</th>
             <th>Comment date</th>
-            <th>Post Id</th>
+            <th>Post Contant</th>
             <th>Action</th>
         </tr>
     </thead>

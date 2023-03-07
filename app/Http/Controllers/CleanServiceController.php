@@ -27,7 +27,7 @@ class CleanServiceController extends Controller
     {
         $category = category::all();
         foreach ($category as $item) {
-            if ($item->Category_Name === 'Clean') {
+            if ($item->Category_Name === 'Cleaning') {
                 $housing = $item->id;
                 $housingname = $item->Category_Name;
             }

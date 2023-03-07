@@ -99,7 +99,7 @@ class CommentController extends Controller
                         $blog_comment['user_lname']    =   $use->user_last_name;
                     }
                 }
-                $counter ++;
+                $counter = count($comment);
                 array_push($result,$blog_comment);
             }
         }

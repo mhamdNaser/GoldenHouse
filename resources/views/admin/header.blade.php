@@ -1,102 +1,121 @@
 
-<nav class="row navbar-dark">
-    <div class="col-lg-12">
-        <div class="row text-center">
-            <a class="nav-brand p-4" href="#">
-                <img src="{{asset('/storage/userimage/'. Auth::user()->user_photo)}}" class="rounded-circle" height="100px" width="100px" alt="Auth Image">
-            </a>
-            <h6 class="text-center text-warning">{{ strtoupper(Auth::user()->user_first_name)}}<br>{{ strtoupper(Auth::user()->user_last_name)}}</h6>
-            <hr class="text-secondary mt-3 mb-5" style="width: 80%; margin: 0 auto">
-        </div>
-        <div class="row">
-            <ul class="navbar-nav text-center">
-                @if (Auth::user()->userttype === 'ADM')
-                <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('Dash_active')" href="{{URL::asset('dashboard')}}">
-                        <span>Home</span>
-                    </a>
-                </li>
-                <li class="nav-item" aria-current="true">
-                    <a class="nav-link text-warning-emphasis @yield('profile_active')" href="{{URL::asset('profile')}}">
-                        profile
-                    </a>
-                </li>
-                <hr class="text-secondary" style="width: 50%; margin: 0 auto">
-                <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('users_active')" href="{{route('users.index')}}">
-                        <span>Users</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('message_active')" href="{{route('massage.index')}}">
-                        <span>Massages</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('posts_active')" href="{{asset('posts')}}">
-                        <span>Posts</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('comment_active')" href="{{asset('comment')}}">
-                        <span>Comments</span>
-                    </a>
-                </li>
-                <hr class="text-secondary" style="width: 50%; margin: 0 auto">
-                <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('service_active')" href="{{route('service.index')}}">
-                        <span>services</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('categories_active')" href="{{route('category.index')}}">
-                        <span>categories</span>
-                    </a>
-                </li>
-                <li class="nav-item @yield('Reservation_active') ">
-                    <a class="nav-link text-warning-emphasis" href="">
-                        <span>reservation</span>
-                    </a>
-                </li>
-                <div class="col-lg-2 fixed-bottom">
-                    <hr class="text-secondary mt-5" style="width: 50%; margin: 0 auto">
-                    <li class="nav-item @yield('Dashboard_active')">
-                        <a class="nav-link text-warning-emphasis" href="{{route('home')}}">
-                            Site View
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-warning-emphasis" href="logout">
-                            Log Out
-                        </a>
-                    </li>
-                </div>
-                @else
-                <li class="nav-item" aria-current="true">
-                    <a class="nav-link text-warning-emphasis @yield('profile_active')" href="{{URL::asset('profile')}}">
-                        profile
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-warning-emphasis @yield('service_active')" href="{{route('service.index')}}">
-                        <span>service</span>
-                    </a>
-                </li>
-                <div class="col-lg-2 fixed-bottom">
-                    <hr class="text-secondary mt-5" style="width: 50%; margin: 0 auto">
-                    <li class="nav-item @yield('Dashboard_active')">
-                        <a class="nav-link text-warning-emphasis" href="{{route('home')}}">
-                            Site View
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-warning-emphasis" href="logout">
-                            Log Out
-                        </a>
-                    </li>
-                </div>
-                @endif
-            </ul>
-        </div>
+<nav class="navbar-dark">
+    <div class="row text-center">
+        <img src="{{url('/images/login.png')}}" class="rounded-circle" alt="Auth Image">
+        {{-- <img src="{{asset('/storage/userimage/'. Auth::user()->user_photo)}}" class="mb-2 rounded-circle" width="80%" alt="Auth Image">
+        <h6 class="text-center text-white" >{{ strtoupper(Auth::user()->user_first_name)}}<br>{{ strtoupper(Auth::user()->user_last_name)}}</h6> --}}
     </div>
+    
+    {{-- LEFT SIDE BAR --}}
+    <ul class="navbar-nav text-center">
+        <hr class="text-secondary">
+
+        {{-- ADMIN TOOLS LEFT BAR --}}
+        @if (Auth::user()->userttype === 'ADM')
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard Home">
+            <a class="nav-link text-light-emphasis @yield('Dash_active')" href="{{URL::asset('dashboard')}}">
+                <span class="fa fa-home fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Profile">
+            <a class="nav-link text-light-emphasis @yield('profile_active')" href="{{route('profile.index')}}">
+                <span class="fa fa-user-circle fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Users">
+            <a class="nav-link text-light-emphasis @yield('users_active')" href="{{route('users.index')}}">
+                <span class="fa fa-users fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Messages">
+            <a class="nav-link text-light-emphasis @yield('message_active')" href="{{route('massage.index')}}">
+                <span class="material-icons fs-4">email</span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Posts">
+            <a class="nav-link text-light-emphasis @yield('posts_active')" href="{{asset('posts')}}">
+                <span class="material-icons fs-4">event_note</span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Comments">
+            <a class="nav-link text-light-emphasis @yield('comment_active')" href="{{asset('comment')}}">
+                <span class="fa fa-comments fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Service">
+            <a class="nav-link text-light-emphasis @yield('service_active')" href="{{route('service.index')}}">
+                <span class="fa fa-gear fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Category">
+            <a class="nav-link text-light-emphasis @yield('categories_active')" href="{{route('category.index')}}">
+                <span class="material-icons fs-4">settings_applications</span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Reservation">
+            <a class="nav-link text-light-emphasis @yield('Reservation_active')" href="">
+                <span class="material-icons fs-4">shopping_cart</span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Back To Site">
+            <a class="nav-link text-light-emphasis" href="{{route('home')}}">
+                <span class="fa fa-step-backward fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Logout">
+            <a class="nav-link text-light-emphasis" href="logout">
+                <span class="fa fa-sign-out fs-4"></span>
+            </a>
+        </li>
+        {{-- SPV TOOLS LEFT BAR  --}}
+        @else
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard Home">
+            <a class="nav-link text-light-emphasis @yield('Dash_active')" href="{{URL::asset('dashboard')}}">
+                <span class="fa fa-home fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Profile">
+            <a class="nav-link text-light-emphasis @yield('profile_active')" href="{{URL::asset('profile')}}">
+                <span class="fa fa-user-circle fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Service">
+            <a class="nav-link text-light-emphasis @yield('service_active')" href="{{route('service.index')}}">
+                <span class="fa fa-gear fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Reservation">
+            <a class="nav-link text-light-emphasis @yield('Reservation_active')" href="">
+                <span class="material-icons fs-4">shopping_cart</span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Back To Site">
+            <a class="nav-link text-light-emphasis" href="{{route('home')}}">
+                <span class="fa fa-step-backward fs-4"></span>
+            </a>
+        </li>
+        <hr class="text-secondary">
+        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Logout">
+            <a class="nav-link text-light-emphasis" href="logout">
+                <span class="fa fa-sign-out fs-4"></span>
+            </a>
+        </li>
+        @endif
+        
+    </ul>
 </nav>
+

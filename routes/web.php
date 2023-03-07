@@ -26,10 +26,9 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about' /* this is path */ , function () { return view('about' ); });
-// Route::get('HomeService' /* this is path */ , function () { return view('homeService' ); });
 Route::get('categoryService' /* this is path */ , function () { return view('admin/service/categoryService' ); });
 Route::get('dashboard' /* this is path */ , function () { return view('admin/index' ); });
-Route::get('profile' /* this is path */ , function () { return view('admin/profile' ); });
+Route::get('cart' /* this is path */ , function () { return view('cart' ); });
 Route::get('add_service' /* this is path */ , function () { return view('partner/add_service' ); });
 
 
@@ -48,8 +47,7 @@ Route::controller(ServiceController::class)->group(function(){
 
 // controller message
 Route::controller(PioController::class)->group(function(){
-    Route::get('profile', 'create')->name('pioSave');
-    Route::post('profile', 'store')->name('pioSave');
+    Route::resource('profile', PioController::class);
 });
 
 // controller message

@@ -21,20 +21,22 @@
                     @endif
                 </h5>
                 <p class="text-black-50 mb-1 fs-4 fw-bolder">{{ strtoupper(Auth::user()->user_first_name)}} {{ strtoupper(Auth::user()->user_last_name)}}</p>
+              </div>
             </div>
-        </div>
-        <div class="card mb-4">
-            <div class="card-body text-center">
+            <div class="card mb-4">
+              <div class="card-body text-center">
                 <div class="row justify-content-center">
+                  @foreach ($pios as $pio)
+                    @if ( Auth::user()->id === $pio->users_id)
+                        <span class="col-lg-10 text-center py-2" id="havePio">{{$pio->pio_text}}</span>
+                    @endif
+                  @endforeach
+                </div>
+                <div class="row justify-content-center" id="addPio">
                     <div class="col-lg-12">
-                        {{-- @foreach ($pio as $pios)
-                            @if ( Auth::user()->id === $pios->users_id)
-                                <span class="row">{{$pios->pio_text}}</span>
-                            @endif
-                        @endforeach --}}
                         Add Pio
                         <button class="border-0 bg-body text-warning fa fa-edit" onclick="toggleForm()"></button>
-                        <form action="{{route('pioSave')}}" method="post" id="pioForm" style="display: none">
+                        <form action="{{route('profile.store')}}" method="post" id="pioForm" style="display: none">
                             @csrf
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">

@@ -17,7 +17,7 @@
     <title>@yield('title')</title>
 </head>
 <body class="vh-100">
-    <div class="col-lg-2 vh-100 d-none d-lg-block fixed-top mypseconbg">
+    <div class="vh-100 d-none d-lg-block fixed-top mypseconbg" style="width: 70px">
         @include('admin.header')
     </div>
     <div class="d-block d-lg-none mypseconbg">
@@ -25,15 +25,15 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 vh-100 d-none d-lg-block  mypseconbg">
+            <div class="vh-100 d-none d-lg-block  mypseconbg" style="width: 70px">
             </div>
-            <div class="col-lg-10">
-                <div class="container">
-                    <div class="container  mt-5 justify-content-center myboxshadow g-2 ">
-                        <div class="container bg-light sticky-top p-3 shadow">
+            <div class="col-lg-11">
+                <div class="justify-content-center">
+                    <div class="mt-5 myboxshadow g-2 ">
+                        <div class="bg-light sticky-top p-3 shadow">
                             @yield('button_header')
                         </div>
-                        <div class="container justify-content-center g-2 bg-white p-4">
+                        <div class="justify-content-center g-2 bg-white p-4">
                             @yield('content_dashboard')
                         </div>
                     </div>
@@ -44,3 +44,9 @@
     
 </body>
 </html>
+<script>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>

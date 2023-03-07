@@ -27,7 +27,7 @@ class DeliveryServiceController extends Controller
     {
         $category = category::all();
         foreach ($category as $item) {
-            if ($item->Category_Name === 'Delivery') {
+            if ($item->Category_Name === 'Transport') {
                 $housing = $item->id;
                 $housingname = $item->Category_Name;
             }

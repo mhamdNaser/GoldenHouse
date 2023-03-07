@@ -17,7 +17,7 @@
             </div>
             <div class="row p-2">
                 <div class="col-lg-12 text-center">
-                    <a class="btn btn-warning mypimarybg text-white border-warning" href="{{route('HouseService.create')}}">Show Service</a>
+                    <a class="btn btn-warning mypimarybg text-white border-warning" href="{{route('HouseService.create')}}">New Service</a>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             </div>
             <div class="row p-2">
                 <div class="col-lg-12 text-center">
-                    <a class="btn btn-warning mypimarybg text-white border-warning" href="{{route('CleanService.create')}}">Show Service</a>
+                    <a class="btn btn-warning mypimarybg text-white border-warning" href="{{route('CleanService.create')}}">New Service</a>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="row p-2">
                 <div class="col-lg-12 text-center">
-                    <a class="btn btn-warning mypimarybg text-white border-warning" href="{{route('DeliveryService.create')}}">Show Service</a>
+                    <a class="btn btn-warning mypimarybg text-white border-warning" href="{{route('DeliveryService.create')}}">New Service</a>
                 </div>
             </div>
         </div>

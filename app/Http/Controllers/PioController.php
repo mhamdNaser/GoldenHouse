@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pio;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class PioController extends Controller
 {
     /**
@@ -14,8 +14,8 @@ class PioController extends Controller
      */
     public function index()
     {
-        $pio = pio::get();
-        return view('admin.profile', compact('pio'));
+        $pios = pio::get();
+        return view('admin.profile', compact('pios'));
     }
 
     /**
@@ -34,12 +34,13 @@ class PioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        $pio = new pio;
-        $pio->users_id = $request->pioUser;
-        $pio->pio_text = $request->pio_text;
-        $pio->save();
+            $pio = new pio;
+            $pio->users_id = $request->pioUser;
+            $pio->pio_text = $request->pio_text;
+            $pio->save();
         return redirect('profile');
     }
 
