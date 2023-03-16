@@ -8,13 +8,24 @@ let regPass2 = "^(?=.*[a-z])([a-zA-Z0-9]{8})";
 let regmail = "^[a-z A-Z 0-9 _ .]+@([a-z]+).([a-z]{2,3})$";
 let regphone = "^([0-9]{10})$";
 
-let fname = document.getElementById("fname");
-let lname = document.getElementById("lname");
-let mail = document.getElementById("email");
-let phone = document.getElementById("phone");
-let pass = document.getElementById("password");
-let repass = document.getElementById("conf-password");
-let btnsubmit = document.getElementById("submit");
+let containerpio    = document.getElementById("havePio");
+let addpio          = document.getElementById("addPio");
+let fname           = document.getElementById("fname");
+let lname           = document.getElementById("lname");
+let mail            = document.getElementById("email");
+let phone           = document.getElementById("phone");
+let pass            = document.getElementById("password");
+let repass          = document.getElementById("conf-password");
+let btnsubmit       = document.getElementById("submit");
+
+
+// review
+if(containerpio.value == ''){
+    addpio.style.display = 'block !important'
+}
+else{
+    addpio.style.display = 'none !important'
+}
 
 checkfname = () => {
     if (fname.value.match(pattern)) {
@@ -86,5 +97,3 @@ function toggleForm() {
     }
 }
 
-
-// review 
