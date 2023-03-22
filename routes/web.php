@@ -2,14 +2,16 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ReservisionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\MassageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\HouseServiceController;
 use App\Http\Controllers\CleanServiceController;
 use App\Http\Controllers\DeliveryServiceController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PioController;
 use App\Http\Controllers\users;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +34,8 @@ Route::get('cart' /* this is path */ , function () { return view('cart' ); });
 Route::get('add_service' /* this is path */ , function () { return view('partner/add_service' ); });
 
 
-
+Route::resource('likes' , LikeController::class);
+Route::resource('reservision' , ReservisionController::class);
 Route::resource('category' , CategoryController::class);
 Route::resource('HouseService' , HouseServiceController::class);
 Route::resource('CleanService' , CleanServiceController::class);
@@ -40,14 +43,20 @@ Route::resource('DeliveryService' , DeliveryServiceController::class);
 
 
 // controller message
+Route::controller(ProfileController::class)->group(function(){
+    Route::get('userProfile', 'show')->name('userProfile');
+    Route::resource('profile' , ProfileController::class);
+});
+
+// controller message
 Route::controller(ServiceController::class)->group(function(){
-    Route::get('seviceshow', 'show')->name('seviceshow');
+    Route::get('seviceshow', 'allshow')->name('seviceshow');
     Route::resource('service' , ServiceController::class);
 });
 
 // controller message
 Route::controller(PioController::class)->group(function(){
-    Route::resource('profile', PioController::class);
+    Route::resource('pio', PioController::class);
 });
 
 // controller message

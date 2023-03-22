@@ -26,6 +26,47 @@ class ServiceController extends Controller
         return view('admin.service.service', [ 'category' => $category, 'housing'=>$housing, 'users'=>$users, 'cleaning'=>$cleaning, 'delivery'=>$delivery]);
     }
 
+    public function allshow()
+    {
+        $housing = HouseService::get();
+        $clean = CleanService::get();
+        $delivery = DeliveryService::get();
+        $result = [];
+        foreach($housing as $item ){
+            $serviceCard = [];
+            $serviceCard['ID']                      =   $item->id;
+            $serviceCard['serviceName']             =   $item->serviceName;
+            $serviceCard['serviceCat']              =   $item->serviceCategory;
+            $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['service_roms']            =   $item->romeNumber;
+            $serviceCard['service_beds']            =   $item->bedNumber;
+            $serviceCard['service_price']           =   $item->servicePrice;
+            $serviceCard['serviceDescription']      =   $item->serviceDescription;
+            array_push($result, $serviceCard);
+        }
+        foreach($clean as $item ){
+            $serviceCard = [];
+            $serviceCard['ID']                      =   $item->id;
+            $serviceCard['serviceName']             =   $item->serviceName;
+            $serviceCard['serviceCat']              =   $item->serviceCategory;
+            $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['service_price']           =   $item->servicePrice;
+            $serviceCard['serviceDescription']      =   $item->serviceDescription;
+            array_push($result, $serviceCard);
+        }
+        foreach($delivery as $item ){
+            $serviceCard = [];
+            $serviceCard['ID']                      =   $item->id;
+            $serviceCard['serviceName']             =   $item->serviceName;
+            $serviceCard['serviceCat']              =   $item->serviceCategory;
+            $serviceCard['service_photo']           =   $item->service_photo1;
+            $serviceCard['service_price']           =   $item->servicePrice;
+            $serviceCard['serviceDescription']      =   $item->serviceDescription;
+            array_push($result, $serviceCard);
+        }
+        return view('HomeService' , compact('result'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -53,37 +94,18 @@ class ServiceController extends Controller
      * @param  \App\Models\House  $house
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $housing = HouseService::get();
-        $clean = CleanService::get();
-        $delivery = DeliveryService::get();
-        $result = [];
-        foreach($housing as $item ){
-            $serviceCard = [];
-            $serviceCard['serviceName']             =   $item->serviceName;
-            $serviceCard['service_photo']           =   $item->service_photo1;
-            $serviceCard['service_price']           =   $item->servicePrice;
-            $serviceCard['serviceDescription']      =   $item->serviceDescription;
-            array_push($result, $serviceCard);
+        if( $id == 1 ){
+            $service = HouseService::get();
+        }elseif( $id == 3 ){
+            $service = CleanService::get();
+        }elseif( $id == 4 ){
+            $service = DeliveryService::get();
+        }else{
+            return view( 'notfound');
         }
-        foreach($clean as $item ){
-            $serviceCard = [];
-            $serviceCard['serviceName']             =   $item->serviceName;
-            $serviceCard['service_photo']           =   $item->service_photo1;
-            $serviceCard['service_price']           =   $item->servicePrice;
-            $serviceCard['serviceDescription']      =   $item->serviceDescription;
-            array_push($result, $serviceCard);
-        }
-        foreach($delivery as $item ){
-            $serviceCard = [];
-            $serviceCard['serviceName']             =   $item->serviceName;
-            $serviceCard['service_photo']           =   $item->service_photo1;
-            $serviceCard['service_price']           =   $item->servicePrice;
-            $serviceCard['serviceDescription']      =   $item->serviceDescription;
-            array_push($result, $serviceCard);
-        }
-        return view('HomeService' , compact('result'));
+        return view('categoryService' , compact('service'));
     }
 
     /**

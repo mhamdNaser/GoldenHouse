@@ -19,7 +19,7 @@
     <div class="row align-items-center mb-2">
         <div class="form-outline">
             <label class="form-label" for="">Category Description</label>
-            <input class="form-control" type="text" id="Category_Description" name="Category_Description" required placeholder="Category Description">
+            <textarea class="form-control" type="text" id="Category_Description" rows="4" name="Category_Description" required placeholder="Category Description"></textarea>
         </div>
     </div>
     <div class="input mb-3">

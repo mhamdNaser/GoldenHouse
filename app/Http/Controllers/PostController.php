@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\post;
 use App\Models\User;
 use App\Models\comment;
+use App\Models\like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -21,27 +22,29 @@ class PostController extends Controller
     {
         $posts      = post::orderBy('created_at', 'desc')->get();
         $user       = User::get();
-        $comment   = comment::get();
+        $comment    = comment::get();
+        $userlike   = like::get();
         $result = [];
-        foreach($posts as $item ){
+        foreach ($posts as $item) {
             $blog_post = [];
             $blog_post['post_id']       =   $item->id;
             $blog_post['post_user']     =   $item->users_id;
             $blog_post['post_text']     =   $item->post_text;
             $blog_post['post_date']     =   $item->created_at;
-            foreach ($user as $us){
-                if($us->id === $blog_post['post_user']){
+            foreach ($user as $us) {
+                if ($us->id === $blog_post['post_user']) {
                     $blog_post['user_photo']    =   $us->user_photo;
                     $blog_post['user_fname']    =   $us->user_first_name;
                     $blog_post['user_lname']    =   $us->user_last_name;
                 }
             }
-            $counter = 0 ;
-            foreach ($comment as $com){
-                if ( $com->posts_id === $blog_post['post_id']){
-                    $counter ++;
+            $counter = 0;
+            foreach ($comment as $com) {
+                if ($com->posts_id === $blog_post['post_id']) {
+                    $counter++;
                 }
             }
+
             $blog_post['counter'] =  $counter;
             array_push($result, $blog_post);
         }
@@ -54,23 +57,23 @@ class PostController extends Controller
         $user       = User::get();
         $comment   = comment::get();
         $result = [];
-        foreach($posts as $item ){
+        foreach ($posts as $item) {
             $blog_post = [];
             $blog_post['post_id']       =   $item->id;
             $blog_post['post_user']     =   $item->users_id;
             $blog_post['post_text']     =   $item->post_text;
             $blog_post['post_date']     =   $item->created_at;
-            foreach ($user as $us){
-                if($us->id === $blog_post['post_user']){
+            foreach ($user as $us) {
+                if ($us->id === $blog_post['post_user']) {
                     $blog_post['user_photo']    =   $us->user_photo;
                     $blog_post['user_fname']    =   $us->user_first_name;
                     $blog_post['user_lname']    =   $us->user_last_name;
                 }
             }
-            $counter = 0 ;
-            foreach ($comment as $com){
-                if ( $com->posts_id === $blog_post['post_id']){
-                    $counter ++;
+            $counter = 0;
+            foreach ($comment as $com) {
+                if ($com->posts_id === $blog_post['post_id']) {
+                    $counter++;
                 }
             }
             $blog_post['counter'] =  $counter;
@@ -103,7 +106,6 @@ class PostController extends Controller
 
         $posts->save();
         return redirect('blog');
-
     }
 
     /**
@@ -137,7 +139,6 @@ class PostController extends Controller
      */
     public function update(Request $request)
     {
-        
     }
 
     /**

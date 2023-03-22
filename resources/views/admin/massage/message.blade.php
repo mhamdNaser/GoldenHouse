@@ -11,9 +11,9 @@
 <table class="table align-middle text-center">
     <thead class="table-dark">
         <tr>
-            <th>Category Name</th>
-            <th>Category image</th>
-            <th>Category Description</th>
+            <th>The Sender Email</th>
+            <th>Subject</th>
+            <th>Message Content</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -29,7 +29,7 @@
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger">Delete</button>
-    
+
                 </form>
             </div>
           </td>

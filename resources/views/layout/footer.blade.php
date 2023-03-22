@@ -19,20 +19,20 @@
             </a>
         </div>
     </div>
-    <hr class="mb-4 mt-0 d-inline-block mx-auto mypimarybg" style="width: 120rem; height: 2px"/>
 
     <!-- Footer -->
     <footer class="text-center text-lg-start text-white">
-  
+        <hr class=" mypimarybg" style="width: 80%; height: 2px; margin: 0px auto"/>
+
       <!-- Section: Links  -->
       <section class="">
-        <div class="container text-center text-md-start mt-5">
+        <div class="container text-center mt-5">
           <!-- Grid row -->
           <div class="row mt-3">
             <!-- Grid column -->
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <div class="col-md-12 col-lg-12 col-xl-12 mx-auto mb-4 fw-bold text-center">
               <!-- Content -->
-              <h6 class="text-uppercase fw-bold">The Golden House</h6>
+              <h6 class="text-uppercase fw-bold text-center">The Golden House</h6>
               <hr class="mb-4 mt-0 d-inline-block mx-auto mypimarybg" style="width: 60px; height: 2px"/>
               <p>
                 When you are looking for safe, comfortable, and clean housing, we are your first choice <br>
@@ -40,18 +40,18 @@
               </p>
             </div>
             <!-- Grid column -->
-  
-            
-  
-            
-  
-            
+
+
+
+
+
+
           </div>
           <!-- Grid row -->
         </div>
       </section>
       <!-- Section: Links  -->
-  
+
       <!-- Copyright -->
       <div class="text-center p-3" >
         © 2020 Copyright:
@@ -60,6 +60,6 @@
       <!-- Copyright -->
     </footer>
     <!-- Footer -->
-  
+
   </div>
   <!-- End of .container -->

@@ -14,104 +14,98 @@
         @if (Auth::user()->userttype === 'ADM')
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard Home">
             <a class="text-light-emphasis @yield('Dash_active')" href="{{URL::asset('dashboard')}}">
-                <span class="fa fa-home fs-5"></span>
+                <span class="fa fa-home fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Profile">
             <a class="text-light-emphasis @yield('profile_active')" href="{{route('profile.index')}}">
-                <span class="fa fa-user-circle fs-5"></span>
+                <span class="fa fa-user-circle fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Users">
             <a class="text-light-emphasis @yield('users_active')" href="{{route('users.index')}}">
-                <span class="fa fa-users fs-5"></span>
+                <span class="fa fa-users fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Messages">
             <a class="text-light-emphasis @yield('message_active')" href="{{route('massage.index')}}">
-                <span class="material-icons fs-5">email</span>
+                <span class="material-icons fs-3">email</span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Posts">
             <a class="text-light-emphasis @yield('posts_active')" href="{{asset('posts')}}">
-                <span class="material-icons fs-5">event_note</span>
+                <span class="material-icons fs-3">event_note</span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Comments">
             <a class="text-light-emphasis @yield('comment_active')" href="{{asset('comment')}}">
-                <span class="fa fa-comments fs-5"></span>
+                <span class="fa fa-comments fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Service">
             <a class="text-light-emphasis @yield('service_active')" href="{{route('service.index')}}">
-                <span class="fa fa-gear fs-5"></span>
+                <span class="fa fa-gear fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Category">
             <a class="text-light-emphasis @yield('categories_active')" href="{{route('category.index')}}">
-                <span class="material-icons fs-5">settings_applications</span>
+                <span class="material-icons fs-3">settings_applications</span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Reservation">
-            <a class="text-light-emphasis @yield('Reservation_active')" href="">
-                <span class="material-icons fs-5">shopping_cart</span>
+            <a class="text-light-emphasis @yield('Reservation_active')" href="{{asset('reservision')}}">
+                <span class="material-icons fs-3">shopping_cart</span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Back To Site">
             <a class="text-light-emphasis" href="{{route('home')}}">
-                <span class="fa fa-step-backward fs-5"></span>
+                <span class="fa fa-step-backward fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Logout">
             <a class="text-light-emphasis" href="logout">
-                <span class="fa fa-sign-out fs-5"></span>
+                <span class="fa fa-sign-out fs-3"></span>
             </a>
         </li>
         {{-- SPV TOOLS LEFT BAR  --}}
         @else
-        <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Dashboard Home">
-            <a class="text-light-emphasis @yield('Dash_active')" href="{{URL::asset('dashboard')}}">
-                <span class="fa fa-home fs-5"></span>
-            </a>
-        </li>
-        <hr class="text-secondary">
         <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Profile">
-            <a class="text-light-emphasis @yield('profile_active')" href="{{URL::asset('profile')}}">
-                <span class="fa fa-user-circle fs-5"></span>
+            <a class="text-light-emphasis @yield('profile_active')" href="{{route('profile.index')}}">
+                <span class="fa fa-user-circle fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Service">
             <a class="text-light-emphasis @yield('service_active')" href="{{route('service.index')}}">
-                <span class="fa fa-gear fs-5"></span>
+                <span class="fa fa-gear fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Reservation">
-            <a class="text-light-emphasis @yield('Reservation_active')" href="">
-                <span class="material-icons fs-5">shopping_cart</span>
+            <a class="text-light-emphasis @yield('Reservation_active')" href="{{route('reservision.index')}}">
+                <span class="material-icons fs-3">shopping_cart</span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Back To Site">
             <a class="text-light-emphasis" href="{{route('home')}}">
-                <span class="fa fa-step-backward fs-5"></span>
+                <span class="fa fa-step-backward fs-3"></span>
             </a>
         </li>
         <hr class="text-secondary">
         <li class="nav-item"  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Logout">
             <a class="text-light-emphasis" href="logout">
-                <span class="fa fa-sign-out fs-5"></span>
+                <span class="fa fa-sign-out fs-3"></span>
             </a>
         </li>
         @endif

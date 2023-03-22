@@ -1,15 +1,15 @@
-@extends('admin.dashboard');
-@section('profile_active', 'active');
+@extends('layout.master')
+
+@section('title', 'profile')
 
 
-@section('content_dashboard')
-
-    <div class="row justify-content-center">
+<div class="pt-5">
+    <div class="row justify-content-center mt-5 py-5">
         <div class="col-lg-4">
             <div class="card mb-4">
                 <div class="card-body text-center">
-                    <img src="{{ asset('/storage/userimage/' . Auth::user()->user_photo) }}" class="rounded-circle img-fluid"
-                        style="width: 150px;" alt="Auth Image">
+                    <img src="{{ asset('/storage/userimage/' . Auth::user()->user_photo) }}"
+                        class="rounded-circle img-fluid" style="width: 150px;" alt="Auth Image">
                     <h5 class="my-3 fw-bolder">
                         @if (Auth::user()->userttype === 'ADM')
                             <i class="fa fa-vcard text-warning"></i> {{ strtoupper(Auth::user()->userttype) }}
@@ -53,6 +53,18 @@
                     </div>
                 </div>
             </div>
+            <div class="card mb-4 p-2">
+                <h4 class="text-warning fw-bolder ms-1 border-bottom pb-2">Service In Pending</h4>
+                @foreach ($result as $item)
+                        @if ($item['usersId'] == Auth::user()->id && $item['reserState'] == 'pending' )
+                            <div class="row ps-3 pe-3">
+                                <span  class="col-4 fw-bolder">{{ strtoupper($item['servicename']) }} <hr /></span>
+                                <span class="col-4 text-black-50">{{ $item['category'] }}</span>
+                                <span class="col-4 fw-bolder">{{ strtoupper($item['servicprice']) }} JD </span>
+                            </div>
+                        @endif
+                    @endforeach
+            </div>
         </div>
         <div class="col-lg-6">
             <div class="card mb-4">
@@ -86,8 +98,36 @@
                     </div>
                 </div>
             </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="text-warning fw-bolder ms-1 border-bottom pb-2">My Service</h2>
+                    @foreach ($result as $item)
+                        @if ($item['usersId'] == Auth::user()->id && $item['reserState'] == 'accept' )
+                            <div class="row justify-content-center align-items-end mb-2">
+                                <div class="col-lg-4 col-md-3">
+                                    <img src="{{ asset('storage/serviceImg/' . $item['serviceimage']) }}" class="img-fluid"
+                                        class="w-100 v-100" alt="">
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-10 p-2">
+                                    <h4>{{ strtoupper($item['servicename']) }}</h4>
+                                    Service Category : <span
+                                        class="fw-bolder">{{ strtoupper($item['category']) }}</span><br>
+                                    Partner Name : <span
+                                        class="fw-bolder">{{ strtoupper($item['partner-fname']) }}{{ strtoupper($item['partner-lname']) }}</span><br>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-10 p-2">
+                                    Start From : <span class="fw-bolder">{{ $item['startDate'] }}</span><br>
+                                    End In : <span class="fw-bolder">{{ $item['endDate'] }}</span><br>
+                                    Service Price : <span
+                                        class="fw-bolder">{{ strtoupper($item['servicprice']) }}</span>
+                                    <span class="text-black-50 fw-normal" style="font-size: 12px">Per Of Month</span>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
-@endsection
-
+</div>
 <script src="{{ url('js/script.js') }}"></script>

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pio;
+use App\Models\like;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-class PioController extends Controller
+
+class LikeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +15,7 @@ class PioController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -24,7 +25,7 @@ class PioController extends Controller
      */
     public function create()
     {
-        return view('admin.profile');
+        //
     }
 
     /**
@@ -33,30 +34,28 @@ class PioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
-        $oldPio = pio::where('users_id', $request->pioUser)->first();
-        if ($oldPio) {
-            $oldPio->delete();
+        $oldlike = like::where('users_id', $request->likeUser)->where('posts_id', $request->likepost)->first();
+        if ($oldlike) {
+            $oldlike->delete();
+            return redirect('blog');
+        } else {
+            $likes           = new like();
+            $likes->posts_id = $request->likepost;
+            $likes->users_id = $request->likeUser;
+            $likes->save();
+            return redirect('blog');
         }
-
-        $newPio = new pio;
-        $newPio->users_id = $request->pioUser;
-        $newPio->pio_text = $request->pio_text;
-        $newPio->save();
-
-        return back();
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\pio  $pio
+     * @param  \App\Models\like  $like
      * @return \Illuminate\Http\Response
      */
-    public function show(pio $pio)
+    public function show(like $like)
     {
         //
     }
@@ -64,10 +63,10 @@ class PioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\pio  $pio
+     * @param  \App\Models\like  $like
      * @return \Illuminate\Http\Response
      */
-    public function edit(pio $pio)
+    public function edit(like $like)
     {
         //
     }
@@ -76,10 +75,10 @@ class PioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\pio  $pio
+     * @param  \App\Models\like  $like
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pio $pio)
+    public function update(Request $request, like $like)
     {
         //
     }
@@ -87,10 +86,10 @@ class PioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\pio  $pio
+     * @param  \App\Models\like  $like
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pio $pio)
+    public function destroy(like $like)
     {
         //
     }

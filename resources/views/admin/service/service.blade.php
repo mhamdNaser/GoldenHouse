@@ -54,12 +54,12 @@
             @endforeach
             <td>{{$item->serviceDescription}}</td>
             <td>
-            <div class="row g-2">
+            <div class="row g-2"  style="min-width: 10rem">
                 <form action="{{route('HouseService.destroy', $item->id)}}" method="post" class="col-lg-6">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger me-2">Delete</button>
-    
+
                 </form>
                 <div class="col-lg-6">
                     <a href="{{route('HouseService.edit', $item->id)}}" class="btn btn-warning">edit </a>
@@ -89,12 +89,12 @@
             @endforeach
             <td>{{$item->serviceDescription}}</td>
             <td>
-            <div class="row g-2">
+            <div class="row g-2"  style="min-width: 10rem">
                 <form action="{{route('CleanService.destroy', $item->id)}}" method="post" class="col-lg-6">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger me-2">Delete</button>
-    
+
                 </form>
                 <div class="col-lg-6">
                     <a href="{{route('CleanService.edit', $item->id)}}" class="btn btn-warning">edit </a>
@@ -124,12 +124,12 @@
             @endforeach
             <td>{{$item->serviceDescription}}</td>
             <td>
-            <div class="row g-2">
+            <div class="row g-2"  style="min-width: 10rem">
                 <form action="{{route('DeliveryService.destroy', $item->id)}}" method="post" class="col-lg-6">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger me-2">Delete</button>
-    
+
                 </form>
                 <div class="col-lg-6">
                     <a href="{{route('DeliveryService.edit', $item->id)}}" class="btn btn-warning">edit </a>

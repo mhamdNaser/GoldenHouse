@@ -31,7 +31,7 @@
     <div class="row justify-content-center align-items-center mb-2">
         <div class="form-outline mb-4">
             <label class="form-label" for="">Service Description</label>
-            <input class="form-control" type="text" id="lname" name="service_desc" required placeholder="Service Description" value="{{$service->serviceDescription}}">
+            <textarea class="form-control" type="text" id="lname" rows="4" name="service_desc" required placeholder="Service Description" value="{{$service->serviceDescription}}">
         </div>
     </div>
     <div class="row justify-content-center align-items-center mb-2">

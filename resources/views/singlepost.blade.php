@@ -6,7 +6,7 @@
 <form class="mt-4" method="post" action="{{route('blog.update', $posts->id)}}" enctype="multipart/form-data">
     @method('PUT')
     @csrf
-    
+
     <div class="row p-5 mt-5 justify-content-center" style="background-color: #f5f5f5">
 
         {{-- User Information --}}
@@ -17,7 +17,7 @@
                 <div class="row mt-4 justify-content-center">
                     <div class="col-lg-12">
                         <div class="row justify-content-center">
-                            <div class="col-lg-8">
+                            <div class="col-lg-8 text-center">
                                 <img src="{{asset('/storage/userimage/'. Auth::user()->user_photo)}}" class="rounded-circle img-thumbnail" alt="Auth Image">
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="col-lg-11">
                             <form method="post" action="{{route('comment.store')}}" enctype="multipart/form-data">
                                 @csrf
-            
+
                                 <div class="row g-3 mt-1 row-cols-lg-auto g-3 align-items-center">
                                     <div class="col-auto">
                                         <img src="{{asset('/storage/userimage/'. Auth::user()->user_photo)}}"  height="30px" width="30px" alt="Auth Image">
@@ -97,7 +97,7 @@
                             </form>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="row mt-3 justify-content-center align-items-center g-2">
                 <div class="col-lg-9">

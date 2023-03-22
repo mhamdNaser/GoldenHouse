@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('romeNumber');
             $table->integer('bedNumber');
             $table->string('price_bed');
+            $table->string('allbed');
             $table->string('service_photo1')->nullable();
             $table->string('service_photo2')->nullable();
             $table->string('service_photo3')->nullable();

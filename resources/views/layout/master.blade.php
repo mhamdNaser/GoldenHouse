@@ -19,16 +19,7 @@
 </head>
 <body style="background-color: #f5f5f5">
     @include('layout.header')
-    <div class="row mt-5 justify-content-center">
-        <div class="col-lg-8 mb-5 mt-5  myboxshadow g-2 ">
-            <div class="container justify-content-center g-2 rounded-3">
-                @yield('content')
-            </div>
-        </div>
-    </div>
-    <div class="mb-0">
-
-    </div>
+    @yield('content')
     @include('layout.footer')
 </body>
 </html>

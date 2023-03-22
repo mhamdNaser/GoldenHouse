@@ -2,10 +2,10 @@
 
 @section('title', 'Contact')
 
-<div class="mt-4 pt-5">
-    @section('content')
+@section('content')
+<div class="row justify-content-center my-5 p-5">
     <!-- Contact-->
-    <div class="row pt-4 ps-2 pe-2" style="background-image: url({{url('/images/contact-bg.jpg')}}); background-size: cover; background-position: center center;">
+    <div class="col-lg-8 mt-5 pt-4 ps-2 pe-2 mypimaryborder myboxshadow" style="background-image: url({{url('/images/contact-bg.jpg')}}); background-size: cover; background-position: center center;">
         <div class="col-lg-6 p-3">
             <div class="card-body py-5 px-md-5 myopacity rounded-3">
                 <form method="post" action="{{route('contact')}}" enctype="multipart/form-data">
@@ -28,13 +28,10 @@
                     </div>
                     <button type="submit" class="btn mypthirdbg btn-block mb-4">Send</button>
                 </form>
-
             </div>
         </div>
-       
     </div>
 
-    <script src="{{url('js/script.js')}}"></script>
-  <!-- Section: Design Block -->
-@endsection
 </div>
+@endsection
+<script src="{{url('js/script.js')}}"></script>

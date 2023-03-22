@@ -62,6 +62,7 @@ class HouseServiceController extends Controller
         $housing->servicePrice          = $request->price_bed;
         $housing->romeNumber            = $request->romeNumber;
         $housing->bedNumber             = $request->bedNumber;
+        $housing->allbed                = ($request->bedNumber)*($request->romeNumber);
         $housing->service_photo1        = $service_img1;
         $housing->service_photo2        = $service_img2;
         $housing->service_photo3        = $service_img3;
@@ -119,7 +120,7 @@ class HouseServiceController extends Controller
         $service->serviceCategory       = $request->catId;
         $service->serviceName           = $request->service_name;
         $service->serviceDescription    = $request->service_desc;
-        $service->price_bed             = $request->price_bed;
+        $service->servicePrice          = $request->price_bed;
         $service->romeNumber            = $request->romeNumber;
         $service->bedNumber             = $request->bedNumber;
         $service->service_photo1        = $service_img1;
