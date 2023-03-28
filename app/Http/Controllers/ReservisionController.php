@@ -9,7 +9,7 @@ use App\Models\CleanService;
 use App\Models\DeliveryService;
 use App\Models\User;
 use App\Models\HouseService;
-use Termwind\Components\Dd;
+use Illuminate\Support\Facades\Auth;
 
 class ReservisionController extends Controller
 {
@@ -23,7 +23,7 @@ class ReservisionController extends Controller
         $result = [];
         $reservision = reservision::orderBy('created_at', 'desc')->get();
         // dd($result);
-        foreach($reservision as $reserv){
+        foreach ($reservision as $reserv) {
             $test = [];
             // $cat      = category::find($reserv->categoryId );
             $test['id']             = $reserv->id;
@@ -35,22 +35,21 @@ class ReservisionController extends Controller
             $test['user-fname']     = User::find($reserv->usersId)->user_first_name;
             $test['user-lname']     = User::find($reserv->usersId)->user_last_name;
             $test['category']       = category::find($reserv->categoryId)->Category_Name;
-            if( $reserv->categoryId == 1){
+            if ($reserv->categoryId == 1) {
                 $test['servicename'] =  HouseService::find($reserv->serviceId)->serviceName;
                 $test['servicprice'] =  HouseService::find($reserv->serviceId)->servicePrice;
-            }elseif( $reserv->categoryId == 3 ){
+            } elseif ($reserv->categoryId == 3) {
                 $test['servicename'] =  CleanService::find($reserv->serviceId)->serviceName;
                 $test['servicprice'] =  CleanService::find($reserv->serviceId)->servicePrice;
-            }elseif( $reserv->categoryId == 4 ){
+            } elseif ($reserv->categoryId == 4) {
                 $test['servicename'] =  DeliveryService::find($reserv->serviceId)->serviceName;
                 $test['servicprice'] =  DeliveryService::find($reserv->serviceId)->servicePrice;
             }
             $test['partner-fname'] = User::find($reserv->partnerId)->user_first_name;
             $test['partner-lname'] = User::find($reserv->partnerId)->user_last_name;
             array_push($result, $test);
-
         }
-        return view('admin.reservitsionadmin', compact( 'reservision', 'result' ));
+        return view('admin.reservitsionadmin', compact('reservision', 'result'));
     }
 
     /**
@@ -60,16 +59,20 @@ class ReservisionController extends Controller
      */
     public function create(Request $request)
     {
-        $id = $request->input('id');
-        $cat = $request->input('cat');
-        if($cat == 1 ){
-            $service = HouseService::get();
-        }elseif($cat == 3){
-            $service = CleanService::get();
-        }elseif ($cat == 4) {
-            $service = DeliveryService::get();
+        if (auth()->check()) {
+            $id = $request->input('id');
+            $cat = $request->input('cat');
+            if ($cat == 1) {
+                $service = HouseService::get();
+            } elseif ($cat == 3) {
+                $service = CleanService::get();
+            } elseif ($cat == 4) {
+                $service = DeliveryService::get();
+            }
+            return view('reservision', ['service' => $service, 'id' => $id]);
+        } else {
+            return view('loginplease');
         }
-        return view('reservision', ['service' => $service, 'id'=>$id]);
     }
 
     /**
@@ -128,9 +131,20 @@ class ReservisionController extends Controller
     public function update($id, Request $request)
     {
         $reservisionstate               = reservision::findOrFail($id);
+        $service                        = HouseService::findOrFail($reservisionstate->serviceId);
         $reservisionstate->reserState   = $request->state;
-        $reservisionstate->save();
-        return redirect('reservision');
+        if ($reservisionstate->categoryId == 1 && $reservisionstate->reserState == "accept" && $service->allbed > 0) {
+            $new = $service->allbed;
+            $new--;
+            $service->allbed = $new;
+            $service->save();
+            $reservisionstate->save();
+            return redirect('reservision');
+        }
+        else{
+            $reservisionstate->save();
+            return redirect('reservision');
+        }
     }
 
     /**

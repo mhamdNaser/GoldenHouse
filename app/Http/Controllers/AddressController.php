@@ -24,7 +24,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.profile');
     }
 
     /**
@@ -35,7 +35,20 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $address = address::where('users_id', $request->addressId)->first();
+        if ($address) {
+            $address->delete();
+        }
+
+        $newaddress = new address;
+        $newaddress->users_id   = $request->addressId;
+        $newaddress->address1   = $request->address1;
+        $newaddress->address2   = $request->address2;
+        $newaddress->zip        = $request->zipcode;
+        $newaddress->city       = $request->city;
+        $newaddress->save();
+
+        return back();
     }
 
     /**

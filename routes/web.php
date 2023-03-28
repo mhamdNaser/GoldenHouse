@@ -13,6 +13,8 @@ use App\Http\Controllers\CleanServiceController;
 use App\Http\Controllers\DeliveryServiceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PioController;
+use App\Http\Controllers\chartController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\users;
 use Illuminate\Support\Facades\Route;
 
@@ -29,12 +31,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about' /* this is path */ , function () { return view('about' ); });
 Route::get('categoryService' /* this is path */ , function () { return view('admin/service/categoryService' ); });
-Route::get('dashboard' /* this is path */ , function () { return view('admin/index' ); });
-Route::get('cart' /* this is path */ , function () { return view('cart' ); });
 Route::get('add_service' /* this is path */ , function () { return view('partner/add_service' ); });
 
 
 Route::resource('likes' , LikeController::class);
+Route::resource('address' , AddressController::class);
+Route::resource('dashboard' , chartController::class);
 Route::resource('reservision' , ReservisionController::class);
 Route::resource('category' , CategoryController::class);
 Route::resource('HouseService' , HouseServiceController::class);

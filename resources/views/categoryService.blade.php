@@ -59,15 +59,20 @@
                                     </div>
                                     <div class="col-md-6 col-lg-2 col-xl-2 border-sm-start-none border-start">
                                         <div class="d-flex flex-row align-items-center mb-1" style="min-height: 50%">
-                                            <h4 class="mb-1 me-1">{{ $item->servicePrice }}</h4>
+                                            <h4 class="mb-1 me-1">{{ $item->servicePrice }} JD</h4>
                                             {{-- <span class="text-danger"><s>$21.99</s></span> --}}
                                         </div>
                                         <div class="d-flex mt-5">
-                                            {{-- <button class="btn btn-primary btn-sm" type="button">Details</button> --}}
-                                            <a class="btn btn-outline-warning btn-sm mt-2"
-                                                href="{{ route('reservision.create', ['id' => $item->id, 'cat' => $item->serviceCategory ]) }}">
-                                                Add to your service
-                                            </a>
+                                            @if ($item->serviceCategory === 1  && $item->allbed == 0 )
+                                                <a class="btn btn-outline-danger btn-sm" @disabled(true) >
+                                                    Full Reservision
+                                                </a>
+                                            @else
+                                                <a class="btn btn-outline-warning btn-sm"
+                                                    href="{{ route('reservision.create', ['id' => $item['ID'], 'cat' => $item['serviceCat']]) }}">
+                                                    Add to your service
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

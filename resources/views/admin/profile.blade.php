@@ -86,6 +86,81 @@
                     </div>
                 </div>
             </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row text-center" id="addPio">
+                        <div class="col-lg-12">
+                            <div class="row border-3 border-bottom mb-4">
+                                <div class="col-lg-2 flex-grow-1 text-start fw-bolder fs-4">
+                                    Address
+                                </div>
+                                <div class="col-lg-3 p-2">
+                                    Add Address
+                                    <button class="border-0 bg-body text-warning fa fa-edit" onclick="toggleForm1()"></button>
+                                </div>
+                            </div>
+                            <form action="{{ route('address.store') }}" method="post" id="addressForm"
+                                style="display: none">
+                                @csrf
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-10">
+                                        <div class="row mb-2">
+                                            <input name="addressId" style="display: none" value="{{ Auth::user()->id }}">
+                                            <input class="form-control" name="address1" placeholder="Address 1">
+                                            <input class="form-control" name="address2" placeholder="Address 2">
+                                            <input class="form-control" name="zipcode" placeholder="Zip Code">
+                                            <input class="form-control" name="city" placeholder="City">
+                                        </div>
+                                        <div class="row">
+                                            <button class="form-control btn btn-outline-warning"
+                                                type="submit">save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    @foreach ($address as $addr)
+                        @if (Auth::user()->id === $addr->users_id)
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">address 1</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ $addr->address1 }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">address 1</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ $addr->address2 }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Zip Code</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ $addr->zip }}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">City</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">{{ $addr->city }}</p>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 @endsection

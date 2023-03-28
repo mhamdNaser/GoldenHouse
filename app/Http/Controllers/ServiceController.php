@@ -40,6 +40,7 @@ class ServiceController extends Controller
             $serviceCard['service_photo']           =   $item->service_photo1;
             $serviceCard['service_roms']            =   $item->romeNumber;
             $serviceCard['service_beds']            =   $item->bedNumber;
+            $serviceCard['service_allbeds']         =   $item->allbed;
             $serviceCard['service_price']           =   $item->servicePrice;
             $serviceCard['serviceDescription']      =   $item->serviceDescription;
             array_push($result, $serviceCard);

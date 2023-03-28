@@ -97,3 +97,16 @@ function toggleForm() {
     }
 }
 
+function toggleForm1() {
+    var form = document.getElementById("addressForm");
+    var button = document.getElementById("myButton");
+
+    if (form.style.display === "none") {
+        form.style.display = "block";
+        button.innerHTML = "Hide Form";
+    } else {
+        form.style.display = "none";
+        button.innerHTML = "Show Form";
+    }
+}
+

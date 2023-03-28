@@ -17,17 +17,18 @@
                     <th>Service Price</th>
                     <th>Service Category</th>
                     <th>Partner Name</th>
-                    <th>Reservision state</th>
-                    <th>End Date</th>
                     <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Reservision state</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($result as $item)
-                    @if ( Auth::user()->userttype == 'ADM'  || (Auth::user()->userttype == 'SVP' && $item['partnerId'] == Auth::user()->id))
+                    @if (Auth::user()->userttype == 'ADM' || (Auth::user()->userttype == 'SVP' && $item['partnerId'] == Auth::user()->id))
                         <tr>
                             <td>
-                                <img src="{{asset('storage/userimage/'. $item['IdCard'])}}" class="" alt="" width="80px">
+                                <img src="{{ asset('storage/userimage/' . $item['IdCard']) }}" class="" alt=""
+                                    width="80px">
                             </td>
                             <td class="fw-bolder">{{ strtoupper($item['user-fname']) }}
                                 {{ strtoupper($item['user-lname']) }}
@@ -43,34 +44,47 @@
                             </td>
                             <td>{{ $item['startDate'] }}</td>
                             <td>{{ $item['endDate'] }}</td>
+                            @php
+                                $currentdate = date('Y-m-d');
+                            @endphp
+                            {{-- @dd($currentdate, $item['endDate']) --}}
                             <td class="fw-bolder">
-                                <form class="d-flex" method="post" action="{{route('reservision.update', $item['id'])}}">
+                                <form class="d-flex" method="post"
+                                    action="{{ route('reservision.update', $item['id']) }}">
                                     @method('PUT')
                                     @csrf
 
-                                    @if ( $item['reserState'] == 'pending')
-                                        <select class="form-select fw-bolder text-warning" id="state" name="state">
-                                            <option value="pending" selected>{{ strtoupper($item['reserState']) }}</option>
-                                            <option class="fw-bolder text-danger" value="reject">Reject</option>
-                                            <option class="fw-bolder text-success" value="accept">Accept</option>
-                                        </select>
-                                        <button type="submit" class="btn btn-warning ms-1">Save</button>
-                                    @endif
-                                    @if ( $item['reserState'] == 'reject' )
-                                        <select class="form-select fw-bolder text-danger" id="state" name="state">
-                                            <option value="pending" selected>{{ strtoupper($item['reserState']) }}</option>
-                                            <option class="fw-bolder text-warning" value="pending">Pending</option>
-                                            <option class="fw-bolder text-success" value="accept">Accept</option>
-                                        </select>
-                                        <button type="submit" class="btn btn-warning ms-1">Save</button>
-                                    @endif
-                                    @if ( $item['reserState'] == 'accept' )
-                                        <select class="form-select fw-bolder text-success" id="state" name="state">
-                                            <option value="pending" selected>{{ strtoupper($item['reserState']) }}</option>
-                                            <option class="fw-bolder text-danger" value="reject">Reject</option>
-                                            <option class="fw-bolder text-warning" value="pending">Pending</option>
-                                        </select>
-                                        <button type="submit" class="btn btn-warning ms-1">Save</button>
+                                    @if ($item['endDate'] == $currentdate)
+                                        <span class="container text-center text-primary fs-6 fw-bolder"> Finished Service</span>
+                                    @else
+                                        @if ($item['reserState'] == 'pending')
+                                            <select class="form-select fw-bolder text-warning" id="state"
+                                                name="state">
+                                                <option value="pending" selected>{{ strtoupper($item['reserState']) }}
+                                                </option>
+                                                <option class="fw-bolder text-danger" value="reject">Reject</option>
+                                                <option class="fw-bolder text-success" value="accept">Accept</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-warning ms-1">Save</button>
+                                        @endif
+                                        @if ($item['reserState'] == 'reject')
+                                            <select class="form-select fw-bolder text-danger" id="state" name="state">
+                                                <option value="pending" selected>{{ strtoupper($item['reserState']) }}
+                                                </option>
+                                                <option class="fw-bolder text-warning" value="pending">Pending</option>
+                                                <option class="fw-bolder text-success" value="accept">Accept</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-warning ms-1">Save</button>
+                                        @endif
+                                        @if ($item['reserState'] == 'accept')
+                                            <select class="form-select fw-bolder text-success" id="state"
+                                                name="state">
+                                                <option value="pending" selected>{{ strtoupper($item['reserState']) }}
+                                                </option>
+                                                <option class="fw-bolder text-danger" value="reject">Reject</option>
+                                                <option class="fw-bolder text-warning" value="pending">Pending</option>
+                                            </select>
+                                        @endif
                                     @endif
                                 </form>
                             </td>
@@ -81,4 +95,3 @@
         </table>
     </div>
 @endsection
-
