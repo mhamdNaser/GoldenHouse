@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\comment;
+use App\Models\like;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\post;
@@ -83,7 +84,7 @@ class CommentController extends Controller
         $user =  User::get();
         $posts = post::find($id);
         $comment = comment::orderBy('created_at', 'desc')->get();
-        $counter = 0 ;
+        // $counter = 0 ;
         $result = [];
         foreach($comment as $item ){
             if ( $item->posts_id === $posts->id){
@@ -99,12 +100,13 @@ class CommentController extends Controller
                         $blog_comment['user_lname']    =   $use->user_last_name;
                     }
                 }
-                $counter = count($comment);
+                // $counter = where( 'posts_id' , $item->posts_id)->count($comment);
+                $counter = Comment::where('posts_id', $item->posts_id)->count();
+                $countlike = like::where('posts_id', $item->posts_id)->count();
                 array_push($result,$blog_comment);
             }
         }
-        
-        return view('singlepost', [ 'comments'=>$result, 'posts'=>$posts, 'count'=>$counter, 'comment'=>$comment, 'user'=>$user] );
+        return view('singlepost', [ 'comments'=>$result, 'posts'=>$posts, 'count'=>$counter, 'ctlike'=>$countlike ,'comment'=>$comment, 'user'=>$user] );
     }
 
     /**

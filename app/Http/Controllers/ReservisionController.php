@@ -7,9 +7,10 @@ use App\Models\reservision;
 use Illuminate\Http\Request;
 use App\Models\CleanService;
 use App\Models\DeliveryService;
+use App\Models\FurnitureService;
 use App\Models\User;
 use App\Models\HouseService;
-use Illuminate\Support\Facades\Auth;
+
 
 class ReservisionController extends Controller
 {
@@ -64,12 +65,48 @@ class ReservisionController extends Controller
             $cat = $request->input('cat');
             if ($cat == 1) {
                 $service = HouseService::get();
+                foreach($service as $ser){
+                    if( $id != $ser->id){
+                        return view('notfound');
+                    }
+                    else{
+                        return view('reservision', ['service' => $service, 'id' => $id]);
+                    }
+                }
+            } elseif ($cat == 2) {
+                $service = FurnitureService::get();
+                foreach($service as $ser){
+                    if( $id != $ser->id){
+                        return view('notfound');
+                    }
+                    else{
+                        return view('reservision', ['service' => $service, 'id' => $id]);
+                    }
+                }
             } elseif ($cat == 3) {
                 $service = CleanService::get();
+                foreach($service as $ser){
+                    if( $id != $ser->id){
+                        return view('notfound');
+                    }
+                    else{
+                        return view('reservision', ['service' => $service, 'id' => $id]);
+                    }
+                }
             } elseif ($cat == 4) {
                 $service = DeliveryService::get();
+                foreach($service as $ser){
+                    if( $id != $ser->id){
+                        return view('notfound');
+                    }
+                    else{
+                        return view('reservision', ['service' => $service, 'id' => $id]);
+                    }
+                }
+            } else {
+                return view('notfound');
             }
-            return view('reservision', ['service' => $service, 'id' => $id]);
+
         } else {
             return view('loginplease');
         }

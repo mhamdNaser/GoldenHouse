@@ -54,14 +54,13 @@
                                 {{ $posts->post_text}}
                             </div>
                             <div class="col-lg-12 bg-light col-md-9">
-                                <form class="row mb-0" action="">
+                                <form class="row mb-0">
                                     <div class="col-1 flex-grow-1">
                                         <a class="btn" type="submit">
                                             <i class="fa fa-heart-o text-warning"></i>
-                                            <span style="display: none">
-                                                {{-- number of comment --}}
+                                            <span class="text-warning">
+                                                {{ $ctlike }}
                                             </span>
-
                                         </a>
                                     </div>
                                     <div class="col-1">
@@ -118,10 +117,33 @@
         </div>
         {{-- List User --}}
         <div class="col-lg-2 mt-2 bg-white" style="height: 30rem">
+            <div class="row border-bottom">
+                <span class="align-middle bg-warning ps-4 pt-2 pb-2 fw-bolder mypsecontext">All User</span>
+            </div>
             @foreach ($user as $us)
-                <div class="row border-bottom p-2">
-                    <span class="align-middle">{{$us->user_first_name}} {{$us->user_last_name}}</span>
-                </div>
+                @if ($us->id != Auth::user()->id)
+                    @if (DB::table('friends')->where('frind_id', $us->id)->exists())
+                        <form class="d-flex border-bottom p-2" method="post"
+                            action="{{ route('friend.destroy', $us->id) }}">
+                            @csrf
+                            @method('delete')
+
+                            <button class="fa fa-user-times bg-white border-0 me-2"></button>
+                            <a class="align-middle text-dark text-decoration-none">{{ $us->user_first_name }}
+                                {{ $us->user_last_name }}</a>
+                        </form>
+                    @else
+                        <form class="d-flex border-bottom p-2" method="post" action="{{ route('friend.store') }}">
+                            @csrf
+
+                            <input type="text" name="id" value="{{ $us->id }}" style="display: none">
+                            <button class="fa fa-user-plus bg-white border-0 me-2"></button>
+                            <a class="align-middle text-dark text-decoration-none">{{ $us->user_first_name }}
+                                {{ $us->user_last_name }}</a>
+                        </form>
+                    @endif
+                    </form>
+                @endif
             @endforeach
         </div>
     </div>

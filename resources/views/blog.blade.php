@@ -98,21 +98,75 @@
         @endforeach
     </div>
 
+
     {{-- List User --}}
-    <div class="col-lg-2 mt-2 bg-white" style="height: 30rem">
-        <div class="row border-bottom">
-            <span class="align-middle bg-warning ps-4 pt-2 pb-2 fw-bolder mypsecontext">All User</span>
-        </div>
-        @foreach ($user as $us)
-            <div class="row border-bottom p-2">
-                <span class="align-middle">{{ $us->user_first_name }} {{ $us->user_last_name }}</span>
+    <div class="col-lg-2 mt-2 bg-white v-50" style="height: 30rem">
+        <div class="v-50">
+            <div class="row border-bottom">
+                <span class="align-middle bg-warning ps-4 pt-2 pb-2 fw-bolder mypsecontext">Friend requests</span>
             </div>
-        @endforeach
+            @foreach ($user as $us)
+                @if (
+                    $us->id != Auth::user()->id &&
+                        DB::table('friends')->where('frind_id', Auth::user()->id)->exists() &&
+                        DB::table('friends')->where('user_id', $us->id)->exists())
+                    <div class="border-bottom p-2">
+                        <div class="row border p-2">
+                            <a class="align-middle text-center text-dark text-decoration-none">{{ $us->user_first_name }}
+                                {{ $us->user_last_name }}</a>
+                        </div>
+                        <div class="row">
+                            <form class="col-lg-6 border p-2 text-center "  method="post" action="{{ route('friend.update') }}">
+                                @csrf
+
+                                <input type="text" name="id" value="{{ $us->id }}" style="display: none">
+                                <button class="fa fa-user-plus bg-white border-0 me-2 text-success"></button>
+                            </form>
+                            <form class="col-lg-6 border p-2 text-center" method="post" action="{{ route('friend.destroy', $us->id) }}">
+                                @csrf
+                                @method('delete')
+
+                                <button class="fa fa-user-times bg-white border-0 me-2 text-danger"></button>
+                            </form>
+                        </div>
+                    </div>
+                @else
+                @endif
+            @endforeach
+        </div>
+        <div class="v-50 pt-3">
+            <div class="row border-bottom">
+                <span class="align-middle bg-warning ps-4 pt-2 pb-2 fw-bolder mypsecontext">All User</span>
+            </div>
+            @foreach ($user as $us)
+                @if (
+                    $us->id != Auth::user()->id &&
+                        !DB::table('friends')->where('user_id', $us->id)->where('frind_id', Auth::user()->id)->exists())
+                    @if (DB::table('friends')->where('frind_id', $us->id)->exists() &&
+                            DB::table('friends')->where('user_id', Auth::user()->id)->exists())
+                        <form class="d-flex border-bottom p-2" method="post"
+                            action="{{ route('friend.destroy', $us->id) }}">
+                            @csrf
+                            @method('delete')
+
+                            <button class="fa fa-user-times bg-white border-0 me-2"></button>
+                            <a class="align-middle text-dark text-decoration-none">{{ $us->user_first_name }}
+                                {{ $us->user_last_name }}</a>
+                        </form>
+                    @else
+                        <form class="d-flex border-bottom p-2" method="post" action="{{ route('friend.store') }}">
+                            @csrf
+
+                            <input type="text" name="id" value="{{ $us->id }}" style="display: none">
+                            <button class="fa fa-user-plus bg-white border-0 me-2"></button>
+                            <a class="align-middle text-dark text-decoration-none">{{ $us->user_first_name }}
+                                {{ $us->user_last_name }}</a>
+                        </form>
+                    @endif
+                @endif
+            @endforeach
+        </div>
     </div>
 </div>
 
 <script src="{{ url('js/blog.js') }}"></script>
-
-
-
-{{-- DB:: --}}

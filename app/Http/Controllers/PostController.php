@@ -6,6 +6,7 @@ use App\Models\post;
 use App\Models\User;
 use App\Models\comment;
 use App\Models\like;
+use App\Models\friend;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -23,8 +24,7 @@ class PostController extends Controller
         $posts      = post::orderBy('created_at', 'desc')->get();
         $user       = User::get();
         $comment    = comment::get();
-        $userlike   = like::get();
-        $result = [];
+        $result     = [];
         foreach ($posts as $item) {
             $blog_post = [];
             $blog_post['post_id']       =   $item->id;
@@ -48,7 +48,7 @@ class PostController extends Controller
             $blog_post['counter'] =  $counter;
             array_push($result, $blog_post);
         }
-        return view('blog', ['posts' => $result, 'user' => $user]);
+        return view('blog', ['posts' => $result, 'user' => $user ]);
     }
 
     public function adminpost()
@@ -159,26 +159,5 @@ class PostController extends Controller
         $post->delete();
         return back()->with('success', 'Category deleted successfully');
 
-        // $post = post::findOrFail($id);
-        // $comments = comment::where('posts_id', $post->id)->get();
-
-        // DB::transaction(function () use ($post, $comments) {
-        //     $post->delete();
-
-        //     foreach ($comments as $comment) {
-        //         $comment->delete();
-        //     }
-        // });
-
-        // return back()->with('success', 'Post and all comments have been deleted successfully.');
-
-        // $post = Post::findOrFail($id);
-
-        // // Delete all associated comments
-        // $post->comments()->delete();
-
-        // // Delete the post
-        // $post->delete();
-        // $comments = comment::where('posts_id', $post->id)->get();
     }
 }
