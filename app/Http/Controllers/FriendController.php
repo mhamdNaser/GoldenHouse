@@ -77,10 +77,16 @@ class FriendController extends Controller
      */
     public function update(Request $request)
     {
+        $confriend = friend::where('frind_id', Auth::user()->id)->first();
+        if ($confriend) {
+            $confriend->state = 'accept';
+            $confriend->save();
+        }
+
         $friend = new friend();
         $friend->user_id = Auth::user()->id;
         $friend->frind_id = $request->id;
-        $friend->state = 'pending';
+        $friend->state = 'accept';
 
         $friend->save();
         return redirect('blog');
@@ -95,10 +101,15 @@ class FriendController extends Controller
     public function destroy($id)
     {
         // Find the friend record by ID
-        $friend = Friend::where( 'frind_id' , $id)->first();
-
+        $friend     = Friend::where( 'frind_id' , $id)->first();
+        if ($friend->state === 'accept') {
+            $friend1 = Friend::where( 'user_id' , $id)->first();
+            $friend1->delete();
+        }
         $friend->delete();
 
         return redirect('blog');
     }
+
+
 }

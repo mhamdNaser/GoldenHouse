@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2023 at 06:23 PM
+-- Generation Time: May 10, 2023 at 09:47 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -30,15 +30,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `addresses` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `users_id` bigint(20) UNSIGNED NOT NULL,
-  `country` varchar(255) DEFAULT NULL,
+  `address1` varchar(255) DEFAULT NULL,
+  `address2` varchar(255) DEFAULT NULL,
+  `zip` int(11) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
-  `street_1` varchar(255) DEFAULT NULL,
-  `street_2` varchar(255) DEFAULT NULL,
-  `street_3` varchar(255) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`id`, `users_id`, `address1`, `address2`, `zip`, `city`, `created_at`, `updated_at`) VALUES
+(3, 1, 'aqaba', '8th', NULL, 'aqaba', '2023-03-28 19:04:45', '2023-03-28 19:04:45');
 
 -- --------------------------------------------------------
 
@@ -111,7 +116,9 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`id`, `users_id`, `posts_id`, `comment_text`, `created_at`, `updated_at`) VALUES
 (1, 4, 1, 'Thank you Mr Muhammed', '2023-03-04 08:28:08', '2023-03-04 08:28:08'),
-(3, 5, 1, 'this is anew comment', '2023-03-20 06:58:41', '2023-03-20 06:58:41');
+(3, 5, 1, 'this is anew comment', '2023-03-20 06:58:41', '2023-03-20 06:58:41'),
+(4, 1, 4, 'شكرا لك على الانضمام إلى عالمنا', '2023-03-27 19:45:41', '2023-03-27 19:45:41'),
+(5, 1, 2, 'this is comment', '2023-03-28 11:00:22', '2023-03-28 11:00:22');
 
 -- --------------------------------------------------------
 
@@ -173,6 +180,29 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `friends`
+--
+
+CREATE TABLE `friends` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `frind_id` int(11) NOT NULL,
+  `state` varchar(255) NOT NULL DEFAULT '''pending''',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `friends`
+--
+
+INSERT INTO `friends` (`id`, `user_id`, `frind_id`, `state`, `created_at`, `updated_at`) VALUES
+(3, 1, 5, 'pending', '2023-03-30 19:34:53', '2023-03-30 19:34:53'),
+(4, 4, 5, 'pending', '2023-03-30 20:01:58', '2023-03-30 20:01:58');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `furniture_services`
 --
 
@@ -217,9 +247,33 @@ CREATE TABLE `house_services` (
 --
 
 INSERT INTO `house_services` (`id`, `serviceCategory`, `partnerId`, `serviceName`, `serviceDescription`, `romeNumber`, `bedNumber`, `allbed`, `servicePrice`, `service_photo1`, `service_photo2`, `service_photo3`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'T-Room', 'This apartment is a two-room unit, featuring a single bed in each room. The unit is equipped with two fully functional bathrooms, a well-appointed kitchen, and essential furniture. The apartment offers a comfortable and convenient living space, designed to accommodate the needs of individuals or couples', 2, 1, 2, 35, 'cover.webp', 'cover.webp', 'cover.webp', '2023-03-18 10:14:18', '2023-03-18 10:14:18'),
+(1, 1, 1, 'T-Room', 'This apartment is a two-room unit, featuring a single bed in each room. The unit is equipped with two fully functional bathrooms, a well-appointed kitchen, and essential furniture. The apartment offers a comfortable and convenient living space, designed to accommodate the needs of individuals or couples', 2, 1, 1, 35, 'cover.webp', 'cover.webp', 'cover.webp', '2023-03-18 10:14:18', '2023-03-28 11:02:01'),
 (2, 1, 1, 'Q-room', 'is apartment is a two-room unit, featuring a two single bed in each room. The unit is equipped with two fully functional bathrooms, a well-appointed kitchen, and essential furniture. The apartment offers a comfortable and convenient living space, designed to accommodate the needs of individuals or couples', 2, 2, 4, 30, 'T-room.webp', 'T-room.webp', 'T-room.webp', '2023-03-18 10:15:18', '2023-03-18 10:15:18'),
-(3, 1, 4, 'A-room', 'This apartment is a two-room unit, featuring a single bed in each room. The unit is equipped with two fully functional bathrooms, a well-appointed kitchen, and essential furniture. The apartment offers a comfortable and convenient living space, designed to accommodate the needs of individuals or couples', 2, 1, 2, 42, 'cover.webp', 'cover.webp', 'cover.webp', '2023-03-18 15:45:19', '2023-03-18 15:45:19');
+(3, 1, 4, 'A-room', 'This apartment is a two-room unit, featuring a single bed in each room. The unit is equipped with two fully functional bathrooms, a well-appointed kitchen, and essential furniture. The apartment offers a comfortable and convenient living space, designed to accommodate the needs of individuals or couples', 2, 1, 0, 42, 'cover.webp', 'cover.webp', 'cover.webp', '2023-03-18 15:45:19', '2023-03-27 18:28:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `users_id` bigint(20) UNSIGNED NOT NULL,
+  `posts_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `users_id`, `posts_id`, `created_at`, `updated_at`) VALUES
+(17, 5, 1, '2023-03-22 07:58:29', '2023-03-22 07:58:29'),
+(19, 5, 3, '2023-03-22 08:06:29', '2023-03-22 08:06:29'),
+(20, 1, 4, '2023-03-27 19:45:43', '2023-03-27 19:45:43'),
+(22, 1, 2, '2023-03-27 19:46:04', '2023-03-27 19:46:04');
 
 -- --------------------------------------------------------
 
@@ -241,7 +295,9 @@ CREATE TABLE `massages` (
 --
 
 INSERT INTO `massages` (`id`, `title_massage`, `email`, `content_massage`, `created_at`, `updated_at`) VALUES
-(1, 'find service', 'huda@gmail.com', 'I would like a double room for two people who are medium -cost. I want it close to the downtown and secure transportation to and from the university', '2023-03-04 08:20:15', '2023-03-04 08:20:15');
+(1, 'find service', 'huda@gmail.com', 'I would like a double room for two people who are medium -cost. I want it close to the downtown and secure transportation to and from the university', '2023-03-04 08:20:15', '2023-03-04 08:20:15'),
+(2, 'service', 'talab@gmail.com', 'why my service is not accept', '2023-03-22 08:13:53', '2023-03-22 08:13:53'),
+(11, 'testing', 'naser1@gmail.com', 'this is first test', '2023-03-28 10:59:07', '2023-03-28 10:59:07');
 
 -- --------------------------------------------------------
 
@@ -275,7 +331,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2023_02_17_185855_create_clean_services_table', 1),
 (14, '2023_02_17_185921_create_delivery_services_table', 1),
 (15, '2023_02_17_185951_create_furniture_services_table', 1),
-(19, '2023_03_17_190835_create_reservisions_table', 2);
+(19, '2023_03_17_190835_create_reservisions_table', 2),
+(20, '2023_03_22_083300_create_likes_table', 3),
+(21, '2023_03_29_170004_create_friends_table', 4);
 
 -- --------------------------------------------------------
 
@@ -328,8 +386,8 @@ CREATE TABLE `pios` (
 
 INSERT INTO `pios` (`id`, `users_id`, `pio_text`, `created_at`, `updated_at`) VALUES
 (18, 4, 'Full Stack Developer', '2023-03-04 12:45:37', '2023-03-04 12:45:37'),
-(22, 1, 'FullStack Web Developer', '2023-03-20 05:06:21', '2023-03-20 05:06:21'),
-(25, 5, 'FullStack Web Developer', '2023-03-20 06:15:23', '2023-03-20 06:15:23');
+(25, 5, 'FullStack Web Developer', '2023-03-20 06:15:23', '2023-03-20 06:15:23'),
+(31, 1, 'FullStack Web Developer', '2023-03-28 19:04:15', '2023-03-28 19:04:15');
 
 -- --------------------------------------------------------
 
@@ -352,7 +410,8 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `users_id`, `post_text`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Welcome to the Golden House website blog. This blog is for students in our housing', '2023-03-04 08:26:28', '2023-03-04 08:26:28'),
 (2, 1, 'Laravel Project get started', '2023-03-06 12:46:56', '2023-03-06 12:46:56'),
-(3, 1, 'مدونة بسيطة لطلبة الجامعات المشتركين في موقعنا', '2023-03-20 13:44:31', '2023-03-20 13:44:31');
+(3, 1, 'مدونة بسيطة لطلبة الجامعات المشتركين في موقعنا', '2023-03-20 13:44:31', '2023-03-20 13:44:31'),
+(4, 5, 'هذه تجربتي الأولى في هذا الموقع شكرا لكم', '2023-03-27 17:40:08', '2023-03-27 17:40:08');
 
 -- --------------------------------------------------------
 
@@ -379,10 +438,12 @@ CREATE TABLE `reservisions` (
 --
 
 INSERT INTO `reservisions` (`id`, `usersId`, `categoryId`, `partnerId`, `serviceId`, `reserState`, `startDate`, `endDate`, `userIdCard`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 4, 3, 'accept', '2023-06-01', '2023-10-31', 'userIdcard.png', '2023-03-18 16:01:53', '2023-03-20 07:31:54'),
-(2, 5, 1, 1, 1, 'pending', '2023-05-01', '2023-12-31', 'userIdcard.png', '2023-03-18 16:02:13', '2023-03-20 07:35:26'),
-(3, 1, 4, 1, 1, 'accept', '2023-04-30', '2023-10-25', 'userIdcard.png', '2023-03-18 17:56:04', '2023-03-19 08:36:31'),
-(4, 5, 3, 1, 1, 'pending', '2023-05-01', '2023-09-20', 'userIdcard.png', '2023-03-20 07:44:53', '2023-03-20 07:44:53');
+(1, 5, 1, 4, 3, 'accept', '2023-06-01', '2023-10-31', 'userIdcard.png', '2023-03-18 16:01:53', '2023-03-27 18:28:19'),
+(2, 5, 1, 1, 1, 'accept', '2023-05-01', '2023-12-31', 'userIdcard.png', '2023-03-18 16:02:13', '2023-03-28 11:02:01'),
+(3, 1, 4, 1, 1, 'accept', '2023-01-30', '2023-03-27', 'userIdcard.png', '2023-03-18 17:56:04', '2023-03-28 10:48:35'),
+(4, 5, 3, 1, 1, 'accept', '2023-05-01', '2023-09-20', 'userIdcard.png', '2023-03-20 07:44:53', '2023-03-28 11:01:35'),
+(5, 5, 3, 1, 1, 'accept', '2023-06-01', '2023-12-30', 'naser.jpg', '2023-03-27 17:39:15', '2023-03-27 17:55:10'),
+(6, 5, 4, 1, 1, 'pending', '2023-08-01', '2023-12-31', 'userIdcard.png', '2023-04-30 04:45:17', '2023-04-30 04:45:17');
 
 -- --------------------------------------------------------
 
@@ -411,10 +472,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `userttype`, `user_first_name`, `user_last_name`, `email`, `phone`, `user_photo`, `gender`, `Date_of_Birth`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'ADM', 'muhammed', 'naser edden', 'naser1@gmail.com', 776830893, '22.jpg', NULL, NULL, '$2y$10$CTNEWioVaS1YZKdJqZz8FOhohSRet3g.sLISx1rnoNRSK3Varsua.', NULL, '2023-02-19 02:12:23', '2023-02-19 02:12:23'),
-(2, 'STD', 'Karam', 'Hatem', 'karam@gmail.com', 776830800, '1.jpeg', NULL, NULL, '$2y$10$yVo8iPfxYE3zGDE1yIe/KOGq8ssvUGgpmZnOdOfuCiURreWKQp4tO', NULL, '2023-03-02 05:49:04', '2023-03-02 05:49:04'),
-(4, 'SVP', 'Amro', 'Shandaq', 'amro@gmail.com', 776830110, '1077114.png', NULL, NULL, '$2y$10$mFD1KE1hIrj2wKXLb4wRlOsO6uZTjbpWN9iF79yTuZ0M1NEa1bJPa', NULL, '2023-03-02 10:52:56', '2023-03-02 10:52:56'),
-(5, 'STD', 'talab', 'yaseen', 'talab@gmail.com', 776830812, 'user.png', NULL, NULL, '$2y$10$co/cltOJGoCUWc5myWNAG.AOcmqBtVIp3D58POPtGM1fduuGyU3Zm', NULL, '2023-03-16 06:27:49', '2023-03-16 06:27:49');
+(1, 'ADM', 'muhammed', 'naser edden', 'naser1@gmail.com', 776830893, '22.jpg', NULL, NULL, '$2y$10$CTNEWioVaS1YZKdJqZz8FOhohSRet3g.sLISx1rnoNRSK3Varsua.', NULL, '2023-03-01 02:12:23', '2023-02-19 02:12:23'),
+(2, 'STD', 'Karam', 'Hatem', 'karam@gmail.com', 776830800, '1.jpeg', NULL, NULL, '$2y$10$yVo8iPfxYE3zGDE1yIe/KOGq8ssvUGgpmZnOdOfuCiURreWKQp4tO', NULL, '2023-03-27 19:55:21', '2023-03-02 05:49:04'),
+(4, 'SVP', 'Amro', 'Shandaq', 'amro@gmail.com', 776830110, '1077114.png', NULL, NULL, '$2y$10$mFD1KE1hIrj2wKXLb4wRlOsO6uZTjbpWN9iF79yTuZ0M1NEa1bJPa', NULL, '2023-03-26 21:00:00', '2023-03-02 10:52:56'),
+(5, 'STD', 'talab', 'yaseen', 'talab@gmail.com', 776830812, 'user.png', NULL, NULL, '$2y$10$co/cltOJGoCUWc5myWNAG.AOcmqBtVIp3D58POPtGM1fduuGyU3Zm', NULL, '2023-03-28 06:27:49', '2023-03-16 06:27:49');
 
 --
 -- Indexes for dumped tables
@@ -472,6 +533,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `friends`
+--
+ALTER TABLE `friends`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `furniture_services`
 --
 ALTER TABLE `furniture_services`
@@ -486,6 +553,14 @@ ALTER TABLE `house_services`
   ADD PRIMARY KEY (`id`),
   ADD KEY `house_services_servicecategory_foreign` (`serviceCategory`),
   ADD KEY `house_services_partnerid_foreign` (`partnerId`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `likes_users_id_foreign` (`users_id`),
+  ADD KEY `likes_posts_id_foreign` (`posts_id`);
 
 --
 -- Indexes for table `massages`
@@ -551,7 +626,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -569,7 +644,7 @@ ALTER TABLE `clean_services`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `contacts`
@@ -590,6 +665,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `friends`
+--
+ALTER TABLE `friends`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `furniture_services`
 --
 ALTER TABLE `furniture_services`
@@ -602,16 +683,22 @@ ALTER TABLE `house_services`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT for table `massages`
 --
 ALTER TABLE `massages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -623,19 +710,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `pios`
 --
 ALTER TABLE `pios`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reservisions`
 --
 ALTER TABLE `reservisions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -693,6 +780,13 @@ ALTER TABLE `furniture_services`
 ALTER TABLE `house_services`
   ADD CONSTRAINT `house_services_partnerid_foreign` FOREIGN KEY (`partnerId`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `house_services_servicecategory_foreign` FOREIGN KEY (`serviceCategory`) REFERENCES `categories` (`id`);
+
+--
+-- Constraints for table `likes`
+--
+ALTER TABLE `likes`
+  ADD CONSTRAINT `likes_posts_id_foreign` FOREIGN KEY (`posts_id`) REFERENCES `posts` (`id`),
+  ADD CONSTRAINT `likes_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `pios`

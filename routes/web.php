@@ -47,6 +47,11 @@ Route::resource('CleanService' , CleanServiceController::class);
 Route::resource('DeliveryService' , DeliveryServiceController::class);
 
 
+// controller frined
+// Route::controller(FriendController::class)->group(function(){
+//     Route::resource('friend' , FriendController::class);
+// });
+
 // controller message
 Route::controller(ProfileController::class)->group(function(){
     Route::get('userProfile', 'show')->name('userProfile');

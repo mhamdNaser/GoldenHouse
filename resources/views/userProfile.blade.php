@@ -105,8 +105,7 @@
                         @if ($item['usersId'] == Auth::user()->id && $item['reserState'] == 'accept' )
                             <div class="row justify-content-center align-items-end mb-2">
                                 <div class="col-lg-4 col-md-3">
-                                    <img src="{{ asset('storage/serviceImg/' . $item['serviceimage']) }}" class="img-fluid"
-                                        class="w-100 v-100" alt="">
+                                    <img src="{{ asset('storage/serviceImg/' . $item['serviceimage']) }}" class="img-fluid w-100" style="max-height: 180px" alt="">
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-10 p-2">
                                     <h4>{{ strtoupper($item['servicename']) }}</h4>

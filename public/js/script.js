@@ -110,3 +110,14 @@ function toggleForm1() {
     }
 }
 
+function toggleForm2() {
+    var form = document.getElementById("friendReq");
+
+    if (form.style.display === "none") {
+        form.style.display = "block";
+        button.innerHTML = "Hide Form";
+    } else {
+        form.style.display = "none";
+        button.innerHTML = "Show Form";
+    }
+}
